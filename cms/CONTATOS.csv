@@ -1,0 +1,12 @@
+﻿id,nome,telefone,whatsapp,observacao,publicado
+callcenter,Central de Agendamento,(24) 2102-1909,(24) 2102-1952,Telefone: opção 7. WhatsApp: opção 5.,SIM
+odonto,Centro Odontológico,(24) 2102-1909,(24) 2102-1952,Opção 4 nos dois canais.,SIM
+cpsi,CPSI,(24) 2102-1988,(24) 99287-1721,,SIM
+assistencia-social,Assistência Social,(24) 2102-1951,(24) 98141-4445,,SIM
+sede,Sede Campestre,(24) 2102-1948,,,SIM
+juridico,Jurídico,(24) 2102-1918,(24) 2102-1952,WhatsApp: opção 6.,SIM
+previdenciario,Previdenciário,(24) 2102-1910,,,SIM
+secretaria,Secretaria,(24) 2102-1904,(24) 2102-1952,WhatsApp: opção 3.,SIM
+ouvidoria,Ouvidoria,(24) 2102-1970,(24) 2102-1952,WhatsApp: opção 7.,SIM
+comercial,Comercial,,,Contato oficial pendente de validação.,SIM
+relacionamento,Relacionamento,,(24) 2102-1952,WhatsApp: opção 2. Confirmar antes de divulgar.,NAO

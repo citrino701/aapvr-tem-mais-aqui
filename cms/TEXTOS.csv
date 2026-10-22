@@ -1,0 +1,59 @@
+﻿chave,texto,publicado
+nav.inicio,Início,SIM
+nav.explorar,Encontrar um serviço,SIM
+nav.servicos,Serviços,SIM
+nav.como,Como funciona,SIM
+nav.unidades,Unidades,SIM
+nav.duvidas,Dúvidas,SIM
+nav.associado,Já sou associado,SIM
+nav.associacao,Quero me associar,SIM
+hero.selo,TEM MAIS AQUI,SIM
+hero.titulo,Encontre o que você procura na AAPVR.,SIM
+hero.texto,"Consultas, odontologia, terapias, atividades físicas, cultura, lazer e orientação. Veja onde cada serviço acontece, quem pode participar e como dar o próximo passo.",SIM
+hero.nota,As condições variam por serviço e unidade. Aqui você confere o caminho antes de falar com a equipe.,SIM
+home.titulo_opcoes,O que você quer fazer hoje?,SIM
+home.mais_titulo,Saúde? Tem mais aqui.,SIM
+home.mais_texto,"Muita gente conhece a AAPVR por uma consulta. Depois descobre atividades, oficinas, espaços de convivência, lazer e orientação para diferentes momentos da vida.",SIM
+home.regras_titulo,"Antes de escolher, entenda como funciona.",SIM
+home.associacao_titulo,Precisa ser aposentado para fazer parte da AAPVR?,SIM
+home.associacao_texto,"Não. O titular pode ter 18 anos ou mais. Também existem possibilidades para dependentes, conforme vínculo e documentação. A equipe Comercial confirma a categoria adequada para cada caso.",SIM
+home.card.1.titulo,Preciso de uma consulta,SIM
+home.card.1.texto,Veja as especialidades disponíveis em cada unidade e entenda como funciona o agendamento.,SIM
+home.card.2.titulo,Quero cuidar do corpo e da mente,SIM
+home.card.2.texto,"Conheça fisioterapias, psicologia, acupuntura, osteopatia e outras possibilidades de cuidado.",SIM
+home.card.3.titulo,Quero me movimentar,SIM
+home.card.3.texto,"Veja hidroginástica, Pilates, musculação, ginástica, yoga, futebol e dança.",SIM
+home.card.4.titulo,Quero aprender e conviver,SIM
+home.card.4.texto,"Explore oficinas, coral, inclusão digital, Cultura Viva, teatro, bordado e encontros.",SIM
+home.card.5.titulo,Quero aproveitar meu tempo livre,SIM
+home.card.5.texto,"Conheça a Sede Campestre, os bailes e outras opções de lazer.",SIM
+home.card.6.titulo,Preciso de orientação,SIM
+home.card.6.texto,"Encontre Assistência Social, Jurídico, Previdenciário, Secretaria e Ouvidoria.",SIM
+home.historias_titulo,Quem usa conta melhor.,SIM
+home.historias_texto,Conheça histórias reais de pessoas que encontraram diferentes formas de participar da AAPVR.,SIM
+explorar.titulo,O que você quer resolver agora?,SIM
+explorar.texto,Escolha uma opção. A gente mostra os caminhos disponíveis e o que você precisa confirmar.,SIM
+servicos.titulo,Tudo o que você pode encontrar na AAPVR.,SIM
+servicos.texto,"Escolha uma área para ver serviços, público, requisitos, unidade e canal de atendimento.",SIM
+saude.titulo,Qual especialidade você procura?,SIM
+saude.texto,Confira as especialidades por unidade. A agenda e a disponibilidade precisam ser confirmadas no momento da solicitação.,SIM
+saude.aviso,"As consultas são eletivas. Em caso de urgência ou emergência, procure o atendimento adequado da rede pública ou privada.",SIM
+odontologia.titulo,Qual atendimento odontológico você procura?,SIM
+terapias-reabilitacao.titulo,Terapias e reabilitação: veja o que existe e o que você precisa.,SIM
+movimento.titulo,Qual atividade faz sentido para a sua rotina?,SIM
+convivencia-aprendizado.titulo,"Quer aprender, criar ou conhecer outras pessoas?",SIM
+lazer.titulo,O que dá para fazer na Sede Campestre?,SIM
+orientacao-direitos.titulo,Qual setor pode ajudar você?,SIM
+como.titulo,"Antes de escolher, entenda como funciona.",SIM
+consultas.titulo,Como marcar uma consulta na AAPVR?,SIM
+consultas.texto,"O caminho é simples, mas a data disponível varia conforme a especialidade, a unidade, a agenda profissional e a procura.",SIM
+associacao.titulo,Quer se associar? Entenda como funciona antes de decidir.,SIM
+associacao.texto,"A associação oferece acesso a consultas eletivas, serviços e atividades conforme categoria, carência, agenda e requisitos de cada área. Entenda o funcionamento e fale com o Comercial para conhecer as condições de adesão.",SIM
+associado.titulo,O que você precisa resolver hoje?,SIM
+associado.texto,Escolha o assunto. Você recebe o canal correto sem precisar descobrir qual setor procurar.,SIM
+duvidas.titulo,Dúvidas frequentes,SIM
+contato.titulo,Com qual assunto você precisa de ajuda?,SIM
+contato.texto,Escolha uma opção para falar com o setor certo.,SIM
+historias.titulo,Quem usa conta melhor.,SIM
+historias.texto,Depoimentos reais e autorizados serão publicados aqui. Nenhum depoimento de demonstração será exibido.,SIM
+rodape.aviso,"As informações podem mudar. Confirme agenda, vagas e documentos com o setor responsável antes de comparecer. Para condições comerciais, fale com o Comercial.",SIM

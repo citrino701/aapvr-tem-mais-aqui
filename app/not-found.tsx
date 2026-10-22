@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound() { return <div className="container narrow page-space"><div className="eyebrow">PÁGINA NÃO ENCONTRADA</div><h1>Este caminho não está disponível.</h1><p className="lead">Você pode procurar outra opção ou falar com a equipe.</p><div className="button-row"><Link className="button" href="/explorar">Encontrar um serviço →</Link><Link className="button secondary" href="/">Ir para o início</Link></div></div>; }
