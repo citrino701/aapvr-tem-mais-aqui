@@ -22,11 +22,11 @@ const defaultContent = seed as Omit<Content,"cmsOnline">;
 
 /**
  * Somente LEITURA via endpoint de Apps Script. Acesso de escrita fica no Google Sheets.
- * Com cache de 120 segundos, nao disparamos Apps Script em cada clique.
+ * A revalidacao de 120 segundos depende do cache configurado na hospedagem.
  */
 export async function getContent(): Promise<Content> {
-  const url = process.env.GOOGLE_CONTENT_API_URL;
-  if (!url) return { ...defaultContent, cmsOnline: false };
+  const url = process.env.GOOGLE_CONTENT_API_URL ||
+    "https://script.google.com/macros/s/AKfycbx9z-CERsSUJgYiPjMZCwCWIenaUIpVeDbmZ_dUc98j2zASt0QSCha-i_9Xy0vaNbet8Q/exec";
   try {
     const response = await fetch(url, { next: { revalidate: 120 } });
     if (!response.ok) throw new Error(`CMS retornou ${response.status}`);
