@@ -1,0 +1,8 @@
+﻿id,nome,resumo,icone,publicado
+saude,Consultas e especialidades,Encontre a especialidade e veja em qual unidade há atendimento.,🩺,SIM
+odontologia,Odontologia,Conheça as áreas do Centro Odontológico e como solicitar atendimento.,🦷,SIM
+terapias-reabilitacao,Terapias e reabilitação,"Veja fisioterapias, psicologia, acupuntura e outras formas de acompanhamento.",🌿,SIM
+movimento,Movimento,"Encontre atividades para força, mobilidade, condicionamento e convivência.",🏃,SIM
+convivencia-aprendizado,Convivência e aprendizado,"Conheça oficinas, projetos culturais, coral e inclusão digital.",🎭,SIM
+lazer,Lazer,Veja o que existe na Sede Campestre e quem pode utilizar.,🌳,SIM
+orientacao-direitos,Orientação e direitos,Descubra qual setor pode ajudar em cada assunto.,💬,SIM
