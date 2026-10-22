@@ -71,7 +71,7 @@ Na aba `CONTATOS`, altere o telefone ou WhatsApp do setor. Para não exibir um c
 
 1. Abra a planilha nativa, vá em **Extensões > Apps Script**.
 2. Abra `cms/apps-script/Code.gs` do projeto e copie todo o código para o editor do Apps Script.
-3. Substitua `COLE_AQUI_O_ID_DA_PLANILHA` pelo ID da URL da Planilha Google, que aparece entre `/d/` e `/edit`.
+3. O código versionado já contém o ID da planilha do projeto. Se usar outra planilha, substitua `SPREADSHEET_ID` pelo ID entre `/d/` e `/edit`.
 4. Clique em **Implantar > Nova implantação**.
 5. Selecione **Aplicativo da web**.
 6. Selecione **Executar como: Eu** e **Quem tem acesso: Qualquer pessoa** (acesso **só de leitura ao JSON publicado**). O Google pode solicitar autorização.
@@ -83,38 +83,19 @@ Na aba `CONTATOS`, altere o telefone ou WhatsApp do setor. Para não exibir um c
 
 ## 5) Conectar o site à planilha
 
-No computador, copie `.env.example` para `.env.local` e preencha:
+A URL pública de leitura do Apps Script já está configurada em `lib/data.ts` como padrão. A variável `GOOGLE_CONTENT_API_URL` pode substituí-la quando for necessário apontar para outra implantação. O site consulta apenas os dados publicados pelo script; a edição continua na planilha.
 
-```env
-GOOGLE_CONTENT_API_URL=https://script.google.com/macros/s/SEU_DEPLOYMENT_ID/exec
-```
+Para trocar a URL padrão ou a lógica do site, abra um PR no GitHub. A integração da Cloudflare publica a versão aprovada após o merge. Edições nas células da planilha não exigem novo deploy; a atualização depende da revalidação de cache configurada na aplicação e na hospedagem.
 
-Reinicie `npm run dev`. O aviso de demonstração some se a resposta JSON for válida. Como usamos `next: { revalidate: 120 }`, as edições levam até cerca de 2 minutos ou eventualmente mais para ficarem visíveis, dependendo do cache de rotas e distribuição da plataforma.
+## 6) Código no GitHub
 
-## 6) Subir para o GitHub
+O projeto está em `citrino701/aapvr-tem-mais-aqui`. Os arquivos devem permanecer nas pastas `app/`, `cms/`, `components/`, `lib/` e `docs/`. Para alterar código, use uma branch e um pull request; não é necessário instalar aplicativo nem enviar arquivos manualmente.
 
-Crie um repositório **novo e separado**, por exemplo `aapvr-tem-mais-aqui`, depois rode na pasta do projeto:
+## 7) Publicação na Cloudflare
 
-```bash
-git init
-git add .
-git commit -m "feat: primeira versão do TEM MAIS AQUI"
-git branch -M main
-git remote add origin https://github.com/SEU_USUARIO/aapvr-tem-mais-aqui.git
-git push -u origin main
-```
+O Worker `aapvr-tem-mais-aqui` foi criado a partir do repositório GitHub e usa a branch `main`. URL inicial: `https://aapvr-tem-mais-aqui.hugoviajante.workers.dev`.
 
-Se você não utiliza Git no terminal, pode usar **Add file > Upload files** na interface do GitHub e enviar os arquivos **de dentro** da pasta do projeto, mantendo as subpastas. Não inclua `.env.local`.
-
-## 7) Publicar na Vercel
-
-1. Acesse `vercel.com`, conecte sua conta GitHub e use **Add New > Project**.
-2. Importe o repositório `aapvr-tem-mais-aqui`.
-3. O framework Next.js deverá ser detectado automaticamente.
-4. Adicione a variável `GOOGLE_CONTENT_API_URL` ao projeto em **Settings > Environment Variables** (Production e Preview, quando aplicável).
-5. Clique em **Deploy**. Quando precisar editar código, faça push no GitHub para uma nova implantação.
-
-**Plano Vercel:** o plano gratuito Hobby é destinado a projetos pessoais não comerciais. Para publicação institucional da AAPVR, avalie um plano adequado ou outra hospedagem cujos termos permitam o uso pretendido.
+No primeiro deploy, o Wrangler detectou Next.js e montou o adaptador OpenNext durante o build. O log confirmou que o build e o deploy foram concluídos. A configuração gerada nesse ambiente de build ainda não está versionada no repositório; uma configuração permanente pode ser adicionada em um PR antes de depender de builds futuros. O site deve ser conferido no endereço publicado, inclusive a leitura do CMS, antes da divulgação institucional.
 
 ## 8) Rotas disponíveis no código
 
