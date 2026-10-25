@@ -13,6 +13,11 @@
 }
 
 body { background: var(--canvas); }
+.page-loading { display: flex; align-items: center; gap: 14px; min-height: 35vh; color: var(--sea); font-weight: 700; }
+.page-loading p { margin: 0; }
+.loading-mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--coral); color: var(--navy); font-size: 1.6rem; line-height: 1; animation: loading-pulse 1s ease-in-out infinite alternate; }
+@keyframes loading-pulse { to { opacity: .55; transform: scale(.86); } }
+@media (prefers-reduced-motion: reduce) { .loading-mark { animation: none; } }
 a:focus-visible, button:focus-visible, summary:focus-visible,
 input:focus-visible, select:focus-visible {
   outline: 3px solid var(--coral);
