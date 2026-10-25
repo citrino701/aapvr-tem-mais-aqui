@@ -1,0 +1,115 @@
+/* Identidade tipográfica provisória. Pode receber os arquivos oficiais depois. */
+:root {
+  --navy: #153e38;
+  --navy2: #24594d;
+  --dark: #193c35;
+  --text: #355850;
+  --sea: #126b5a;
+  --mint: #e6f0e7;
+  --canvas: #fbfaf5;
+  --border: #dbe8df;
+  --yellow: #f1f6c8;
+  --coral: #e58d77;
+}
+
+body { background: var(--canvas); }
+a:focus-visible, button:focus-visible, summary:focus-visible,
+input:focus-visible, select:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 3px;
+}
+.top-strip { background: #173e37; color: #f7f5e7; }
+.top-strip span { color: var(--coral); }
+.site-header { background: #fffefb; }
+.brand { gap: 0; }
+.brand-wordmark { display: block; font-size: 1.45rem; line-height: .95; letter-spacing: -.055em; }
+.brand-wordmark small { margin-top: 7px; font-size: .56rem; letter-spacing: .18em; }
+.desktop-nav .nav-cta { background: #e8f1e8; }
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  background: radial-gradient(circle at 6% 90%, #d7e8d9 0, transparent 36%),
+              linear-gradient(115deg, #f0f5ea 0%, #fbfaf5 72%);
+  border-bottom: 1px solid #dce9df;
+}
+.hero:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .25;
+  background-image: radial-gradient(#6a9d80 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(90deg, transparent 20%, black 100%);
+}
+.hero-inner { grid-template-columns: minmax(0, 1.15fr) minmax(340px, .85fr); gap: 55px; min-height: 635px; padding-top: 70px; padding-bottom: 78px; }
+.hero-copy { position: relative; z-index: 1; }
+.hero .eyebrow { display: inline-flex; align-items: center; gap: 11px; color: #185b4c; }
+.hero .eyebrow:before { content: "+"; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--coral); color: #183b35; font-size: 1.25rem; letter-spacing: 0; line-height: 1; }
+.hero h1 { max-width: 730px; margin-bottom: 25px; font-size: clamp(2.8rem, 5.7vw, 5.3rem); line-height: 1.01; letter-spacing: -.065em; }
+.hero .lead { max-width: 620px; margin-bottom: 30px; color: #3e5d56; font-size: clamp(1.09rem, 1.7vw, 1.3rem); }
+.hero .button { box-shadow: 0 8px 20px #1a6d5823; }
+.hero .button.secondary { box-shadow: none; background: #fffdf9; border-color: #bcd2c2; }
+.hero-note { max-width: 620px; padding-left: 16px; border-left: 3px solid var(--coral); line-height: 1.5; }
+.hero-visual {
+  height: 462px;
+  border-radius: 50% 50% 26px 26px;
+  background: #184b40;
+  padding: 0;
+  box-shadow: 0 34px 65px #124d3f2a;
+}
+.hero-visual:before { width: 405px; height: 405px; left: 50%; right: auto; bottom: 30px; transform: translateX(-50%); border: 1px solid #a8d6ae59; background: transparent; }
+.hero-visual:after { content: ""; position: absolute; width: 255px; height: 255px; top: 110px; left: 50%; transform: translateX(-50%); border: 1px solid #a8d6ae59; border-radius: 50%; }
+.hero-visual .hero-art-kicker { position: absolute; z-index: 2; top: 30px; left: 50%; transform: translateX(-50%); width: max-content; border: 0; padding: 0; margin: 0; font-size: .64rem; letter-spacing: .22em; color: #c8e7ce; }
+.hero-art-orbit { position: absolute; inset: 0; z-index: 2; }
+.hero-visual .hero-art-orbit span { position: absolute; display: block; width: max-content; margin: 0; padding: 8px 13px; border: 1px solid #a8d6ae9a; border-radius: 24px; background: #255d4e; color: #f7f9e9; font-size: .69rem; letter-spacing: .08em; }
+.hero-art-orbit span:nth-child(1) { top: 19%; left: 12%; }
+.hero-art-orbit span:nth-child(2) { top: 30%; right: 4%; }
+.hero-art-orbit span:nth-child(3) { top: 48%; left: 4%; }
+.hero-art-orbit span:nth-child(4) { top: 61%; right: 12%; }
+.hero-art-orbit span:nth-child(5) { top: 76%; left: 13%; }
+.hero-art-orbit span:nth-child(6) { top: 78%; right: 5%; }
+.hero-visual .hero-art-plus { position: absolute; z-index: 1; top: 47%; left: 50%; transform: translate(-50%, -50%); margin: 0; padding: 0; border: 0; font-size: 14rem; font-weight: 300; line-height: .7; color: #d0e7bc; }
+.hero-visual .hero-art-caption { position: absolute; z-index: 2; left: 0; right: 0; bottom: 24px; display: block; margin: 0; padding: 0; border: 0; color: #e4f0e3; text-align: center; font-size: .82rem; font-weight: 600; letter-spacing: .025em; line-height: 1.3; }
+
+.home-options .section-header { max-width: 700px; }
+.home-options .section-header p { color: #59736c; font-size: 1.04rem; }
+.home-option { position: relative; }
+.home-option-number { position: absolute; z-index: 2; top: 25px; left: 25px; font-size: .8rem; font-weight: 900; color: #aa5b4e; letter-spacing: .08em; }
+.home-option .card { height: 100%; min-height: 256px; padding-top: 62px; transition: border-color .18s, transform .18s, box-shadow .18s; }
+.home-option .card:hover { border-color: #b1d0b9; box-shadow: 0 16px 36px #204a3513; transform: translateY(-3px); }
+.home-option .card h3 { font-size: 1.3rem; color: #173f36; }
+.home-option .card p { color: #5d736b; }
+.soft-section { background: #194a3e; color: #fffdf6; }
+.soft-section .eyebrow { color: #f4ac94; }
+.soft-section p { color: #dce9da; }
+.soft-section .button { background: #f4c6a9; color: #173e37; white-space: nowrap; }
+.soft-section .button:hover { background: #ffe0c6; }
+.association-panel { background: #e9f0e6; border-color: #d4e4d6; }
+.panel-icon { background: #f5c5ab; color: #17473e; }
+
+@media(max-width:990px) {
+  .hero-inner { grid-template-columns: minmax(0, 1fr) 310px; gap: 25px; }
+  .hero-visual { height: 385px; }
+  .hero-visual:before { width: 330px; height: 330px; }
+  .hero-visual:after { width: 210px; height: 210px; top: 90px; }
+  .hero-visual .hero-art-plus { font-size: 10rem; }
+  .hero-visual .hero-art-orbit span { font-size: .57rem; padding: 6px 9px; }
+}
+@media(max-width:700px) {
+  .hero-inner { display: block; padding-top: 55px; padding-bottom: 55px; }
+  .hero h1 { font-size: clamp(2.7rem, 11vw, 4.1rem); }
+  .hero-visual { width: min(100%, 420px); height: 390px; margin: 42px auto 0; }
+  .hero-visual:before { width: 335px; height: 335px; }
+  .hero-visual:after { width: 215px; height: 215px; top: 95px; }
+  .hero-visual .hero-art-plus { font-size: 11rem; }
+  .hero-visual .hero-art-orbit span { font-size: .6rem; }
+  .home-option .card { min-height: 215px; }
+  .soft-section .button { white-space: normal; }
+}
+@media(max-width:370px) {
+  .hero-visual { height: 350px; }
+  .hero-visual .hero-art-orbit span { font-size: .52rem; padding: 5px 7px; }
+  .hero-visual .hero-art-plus { font-size: 9rem; }
+}
