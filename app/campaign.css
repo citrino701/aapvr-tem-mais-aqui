@@ -77,7 +77,7 @@ input:focus-visible, select:focus-visible {
 .home-options .section-header { max-width: 700px; }
 .home-options .section-header p { color: #59736c; font-size: 1.04rem; }
 .home-option { position: relative; }
-.home-option-number { position: absolute; z-index: 2; top: 25px; left: 25px; font-size: .8rem; font-weight: 900; color: #aa5b4e; letter-spacing: .08em; }
+.home-option-number { position: absolute; z-index: 2; top: 25px; left: 25px; pointer-events: none; font-size: .8rem; font-weight: 900; color: #aa5b4e; letter-spacing: .08em; }
 .home-option .card { height: 100%; min-height: 256px; padding-top: 62px; transition: border-color .18s, transform .18s, box-shadow .18s; }
 .home-option .card:hover { border-color: #b1d0b9; box-shadow: 0 16px 36px #204a3513; transform: translateY(-3px); }
 .home-option .card h3 { font-size: 1.3rem; color: #173f36; }
