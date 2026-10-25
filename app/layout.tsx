@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { getContent, t } from "@/lib/data";
+import NavigationFeedback from "@/components/NavigationFeedback";
 import "./globals.css";
 import "./campaign.css";
 
@@ -21,6 +22,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html lang="pt-BR">
       <body>
+        <NavigationFeedback />
         <div className="top-strip">AAPVR <span>•</span> TEM MAIS AQUI</div>
         <header className="site-header">
           <div className="container header-inner">
