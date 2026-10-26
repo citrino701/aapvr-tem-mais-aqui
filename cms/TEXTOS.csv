@@ -57,3 +57,6 @@ contato.texto,Escolha uma opção para falar com o setor certo.,SIM
 historias.titulo,Quem usa conta melhor.,SIM
 historias.texto,Depoimentos reais e autorizados serão publicados aqui. Nenhum depoimento de demonstração será exibido.,SIM
 rodape.aviso,"As informações podem mudar. Confirme agenda, vagas e documentos com o setor responsável antes de comparecer. Para condições comerciais, fale com o Comercial.",SIM
+social.instagram.url,,SIM
+social.facebook.url,,SIM
+social.whatsapp.url,,SIM
