@@ -217,7 +217,7 @@ body {
 .area-card p { color: #5b7184; }
 .area-icon { display: grid; place-items: center; width: 43px; height: 43px; margin-bottom: 17px; border-radius: 14px; background: #e7f3fa; color: #126caf; font-size: 1.3rem; font-weight: 800; }
 .all-services-link { display: inline-flex; align-items: center; gap: 12px; margin-top: 25px; color: #126caf; font-weight: 800; }
-.soft-section.eligibility-section { padding: 76px 0; color: white; background: linear-gradient(115deg, #063864 0%, #07558e 50%, #0d6ca8 100%); }
+.soft-section.eligibility-section { padding: 76px 0; color: white; background: linear-gradient(115deg, #08457c 0%, #09659b 52%, #157caf 100%); }
 .eligibility-inner { display: grid; grid-template-columns: minmax(0,.72fr) minmax(0,1.28fr); gap: 56px; align-items: start; }
 .eligibility-section .eyebrow { color: #a9daf4; }
 .eligibility-section h2 { max-width: 460px; color: #fff; }
@@ -251,7 +251,7 @@ body {
 .association-section .association-panel h2 { color: #073b70; }
 .association-section .association-panel p { max-width: 720px; color: #4e687d; }
 .association-section .panel-icon { border-radius: 24px; background: linear-gradient(145deg, #0f6ead, #063d70); color: #fff; font-size: 1.55rem; letter-spacing: -.04em; }
-.site-footer { background: linear-gradient(115deg, #052e55 0%, #06477c 48%, #0b6098 100%); }
+.site-footer { background: linear-gradient(115deg, #052e55 0%, #07527b 48%, #155f99 100%); }
 .site-footer .footer-cta { color: #fff; }
 .site-footer .footer-bottom a { color: #b9e2f7; }
 .mobile-cta { background: linear-gradient(110deg, #126caf, #073b70); }
@@ -313,7 +313,7 @@ body {
 .mobile-nav summary { color: #f5faff; }
 .hero {
   color: #fff;
-  background: linear-gradient(118deg, #06345f 0%, #07548d 52%, #0875ad 100%);
+  background: linear-gradient(118deg, #06345f 0%, #07548d 48%, #0a80a8 100%);
   border-bottom: 1px solid #277caf;
 }
 .hero:before { opacity: .12; background-image: radial-gradient(#d4efff 1px, transparent 1px); }
@@ -346,7 +346,7 @@ body {
 .association-paths { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
 .association-paths .button { white-space: nowrap; }
 .association-paths .button.secondary { color: #0a5289; border-color: #c7dfef; background: #fff; }
-.site-footer { background: linear-gradient(115deg, #052e55 0%, #06477c 48%, #0b6098 100%); }
+.site-footer { background: linear-gradient(115deg, #052e55 0%, #07527b 48%, #155f99 100%); }
 .site-footer:before { background-image: radial-gradient(#d6efff 1px, transparent 1px); }
 .site-footer p { color: #e0f0fa; }
 .site-footer .footer-cta { color: #073b70; border-color: #d4efff75; background: linear-gradient(120deg, #d8f1ff, #fff); }
@@ -429,3 +429,10 @@ body {
   .hero-finder { margin-top: 28px; }
   .hero .finder-cover { min-height: 240px; }
 }
+
+
+/* Selo ampliado da AAPVR no canto do primeiro bloco. */
+.hero-layout::after { content: ""; position: absolute; z-index: 2; top: -48px; right: -68px; width: clamp(190px, 24vw, 320px); aspect-ratio: 1; pointer-events: none; background: url("/brand/aapvr-mark.svg") center / contain no-repeat; opacity: .17; filter: blur(3px); transform: scale(1.08); }
+.hero-layout .hero-copy { z-index: 3; }
+@media(max-width:990px) { .hero-layout::after { top: -32px; right: -38px; width: 235px; opacity: .14; } }
+@media(max-width:700px) { .hero-layout::after { top: -18px; right: -16px; width: 150px; opacity: .11; filter: blur(2px); } }
