@@ -102,7 +102,7 @@ export default function GuidedFinder({ content }: { content: Content }) {
         <span className="finder-kicker">BUSCA GUIADA</span>
       </div>
 
-      {!started && <div className="finder-stage finder-cover" key="cover"><span className="finder-cover-icon" aria-hidden="true">＋</span><h2 id="finder-title">Encontre o serviço certo para você</h2><p>Responda a duas perguntas rápidas. A gente mostra as opções, unidades e os próximos passos.</p><button type="button" className="button finder-start" onClick={() => setStarted(true)}>Iniciar busca <span aria-hidden="true">→</span></button></div>}
+      {!started && <div className="finder-stage finder-cover" key="cover"><h2 id="finder-title">Encontre o serviço certo para você</h2><p>Responda a duas perguntas rápidas. A gente mostra as opções, unidades e os próximos passos.</p><button type="button" className="button finder-start" onClick={() => setStarted(true)}>Iniciar busca <span aria-hidden="true">→</span></button></div>}
 
       {started && !need && <div className="finder-stage" key="need">
         <h2 id="finder-title">O que você precisa hoje?</h2>
