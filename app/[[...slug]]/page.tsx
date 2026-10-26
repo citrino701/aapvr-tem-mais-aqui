@@ -6,6 +6,8 @@ import { getContent } from "@/lib/cms";
 import Explorer from "@/components/Explorer";
 import ContactChooser from "@/components/ContactChooser";
 import TrackLink from "@/components/TrackLink";
+import GuidedFinder from "@/components/GuidedFinder";
+import Image from "next/image";
 
 type PageArgs = {
   params: Promise<{ slug?: string[] }>;
@@ -30,33 +32,22 @@ function SectionCard({title,body,href,cta}:{title:string;body:string;href:string
   return <Link className="card action-card card-link" href={href}><h3>{title}</h3><p>{body}</p><span className="arrow-link">{cta} <span>→</span></span></Link>;
 }
 function Home({c}:{c:Content}) {
-  const paths = [
-    ["SAÚDE", "/servicos/saude"],
-    ["MOVIMENTO", "/servicos/movimento"],
-    ["CULTURA", "/servicos/convivencia-aprendizado"],
-    ["LAZER", "/servicos/lazer"],
-    ["ORIENTAÇÃO", "/servicos/orientacao-direitos"],
-    ["CONVIVÊNCIA", "/servicos/convivencia-aprendizado"],
-  ];
-  const cards = [
-    ["Preciso de uma consulta","Veja as especialidades disponíveis em cada unidade e entenda como funciona o agendamento.","/servicos/saude","Ver especialidades"],
-    ["Quero cuidar do corpo e da mente","Conheça fisioterapias, psicologia, acupuntura, osteopatia e outras possibilidades de cuidado.","/servicos/terapias-reabilitacao","Ver terapias e reabilitação"],
-    ["Quero me movimentar","Veja hidroginástica, Pilates, musculação, ginástica, yoga, futebol e dança.","/servicos/movimento","Ver atividades"],
-    ["Quero aprender e conviver","Explore oficinas, coral, inclusão digital, Cultura Viva, teatro, bordado e encontros.","/servicos/convivencia-aprendizado","Ver oficinas e projetos"],
-    ["Quero aproveitar meu tempo livre","Conheça a Sede Campestre, os bailes e outras opções de lazer.","/servicos/lazer","Ver lazer"],
-    ["Preciso de orientação","Encontre Assistência Social, Jurídico, Previdenciário, Secretaria e Ouvidoria.","/servicos/orientacao-direitos","Encontrar orientação"],
+  const areas = [
+    ["saude", "Consultas e especialidades", "Encontre especialidades e consulte em quais unidades há atendimento.", "✚"],
+    ["odontologia", "Odontologia", "Conheça os atendimentos odontológicos e como solicitar.", "◉"],
+    ["terapias-reabilitacao", "Movimento e Reabilitação", "Veja fisioterapias, terapias e atividades para diferentes necessidades.", "↗"],
+    ["convivencia-aprendizado", "Cultura e Aprendizado", "Explore oficinas, projetos culturais, coral e inclusão digital.", "✳"],
+    ["lazer", "Lazer e Convivência", "Conheça a Sede Campestre, bailes e outras opções de convivência.", "⌂"],
+    ["orientacao-direitos", "Apoio e Orientação", "Encontre Assistência Social, Jurídico, Previdenciário e outros setores.", "◎"],
   ];
   return <>
-    <section className="hero"><div className="container hero-inner"><div className="hero-copy"><div className="eyebrow">{t(c,"hero.selo")}</div><h1>{t(c,"hero.titulo")}</h1><p className="lead">{t(c,"hero.texto")}</p><div className="button-row"><TrackLink href="/explorar" event="interest_selected" params={{source:"homepage"}} className="button">Encontrar um serviço <span>→</span></TrackLink><Link href="/associacao" className="button secondary">Entender a associação</Link></div><p className="hero-note">{t(c,"hero.nota")}</p></div><div className="hero-visual"><span className="hero-art-kicker" aria-hidden="true">AAPVR · TEM MAIS AQUI</span><div className="hero-art-orbit" aria-label="Explorar por área">{paths.map(([name,href])=><Link key={name} href={href}>{name}</Link>)}</div><span className="hero-art-plus" aria-hidden="true">+</span><span className="hero-art-caption" aria-hidden="true">Diferentes caminhos.<br/>Um lugar para começar.</span></div></div></section>
-    <section className="container section-space home-options"><div className="section-header"><span className="eyebrow">POR ONDE COMEÇAR</span><h2>{t(c,"home.titulo_opcoes")}</h2><p>Escolha pelo que você precisa. Cada caminho mostra as condições e o próximo passo.</p></div><div className="card-grid three">{cards.map(([title,body,href,cta],i)=><div className="home-option" key={href}><span className="home-option-number" aria-hidden="true">{String(i+1).padStart(2,"0")}</span><SectionCard title={t(c,`home.card.${i+1}.titulo`,title)} body={t(c,`home.card.${i+1}.texto`,body)} href={href} cta={cta}/></div>)}</div></section>
-    <section className="soft-section"><div className="container split-callout"><div><span className="eyebrow">DESCUBRA OUTRAS POSSIBILIDADES</span><h2>{t(c,"home.mais_titulo")}</h2><p>{t(c,"home.mais_texto")}</p></div><Link className="button" href="/servicos">Conhecer tudo o que existe →</Link></div></section>
-    <section className="container section-space"><div className="section-header"><span className="eyebrow">INFORMAÇÃO CLARA</span><h2>{t(c,"home.regras_titulo")}</h2></div><div className="card-grid two">
-      <div className="card"><h3>A AAPVR não é plano de saúde</h3><p>O atendimento é ambulatorial e eletivo. Não oferece pronto atendimento, internação ou cirurgia hospitalar.</p></div>
-      <div className="card"><h3>A agenda varia</h3><p>O prazo depende da especialidade, da unidade, da agenda profissional e da procura.</p></div>
-      <div className="card"><h3>Cada serviço tem suas regras</h3><p>Alguns exigem pedido médico, atestado, idade mínima ou matrícula ativa.</p></div>
-      <div className="card"><h3>Nem tudo é exclusivo para associados</h3><p>Há atendimentos e atividades abertos a não associados. Consulte cada serviço.</p></div>
-    </div><Link className="arrow-link spaced-link" href="/como-funciona">Ver como funciona →</Link></section>
-    <section className="container section-space bottom-spacer"><div className="panel association-panel"><div><span className="eyebrow">ASSOCIAÇÃO</span><h2>{t(c,"home.associacao_titulo")}</h2><p>{t(c,"home.associacao_texto")}</p><Link className="button" href="/associacao">Entender a associação →</Link></div><div className="panel-icon" aria-hidden="true">18+</div></div></section>
+    <section className="hero"><div className="container hero-inner"><div className="hero-copy"><Image className="hero-campaign-logo" src="/brand/tem-mais-aqui.svg" alt="Tem Mais Aqui" width={222} height={113} priority/><div className="eyebrow">{t(c,"hero.selo")}</div><h1>{t(c,"hero.titulo")}</h1><p className="lead">{t(c,"hero.texto")}</p><p className="hero-note">{t(c,"hero.nota")}</p></div><GuidedFinder content={c}/></div></section>
+    <section className="container section-space areas-section"><div className="section-header"><span className="eyebrow">EXPLORE TODAS AS ÁREAS</span><h2>Conheça o que existe na AAPVR</h2><p>Se ainda está descobrindo as possibilidades, comece pelas áreas.</p></div><div className="card-grid three">{areas.map(([id,title,body,icon])=><Link className="card area-card" key={id} href={`/servicos/${id}`}><span className="area-icon" aria-hidden="true">{icon}</span><h3>{title}</h3><p>{body}</p><span className="arrow-link">Explorar serviços <span>→</span></span></Link>)}</div><Link href="/servicos" className="all-services-link">Ver todos os serviços <span>→</span></Link></section>
+    <section className="soft-section eligibility-section" id="quem-pode-utilizar"><div className="container eligibility-inner"><div><span className="eyebrow">QUEM PODE UTILIZAR?</span><h2>Você não precisa adivinhar se pode participar.</h2><p>As regras dependem do serviço e da categoria de associação. Antes de entrar em contato, veja os critérios informados para cada opção.</p></div><div className="eligibility-grid"><article><span>01</span><h3>Associados</h3><p>Podem utilizar os serviços previstos em sua categoria, conforme agenda, carência e requisitos.</p></article><article><span>02</span><h3>Dependentes</h3><p>O acesso depende do vínculo, da idade e da documentação exigida.</p></article><article><span>03</span><h3>Não associados</h3><p>Alguns atendimentos e atividades podem estar disponíveis. Consulte as condições de cada serviço.</p></article><p className="eligibility-note">As regras variam por serviço, unidade, agenda e disponibilidade. Confirme os dados antes de comparecer.</p></div></div></section>
+    <section className="container section-space access-section" id="como-acessar"><div className="section-header"><span className="eyebrow">COMO ACESSAR UM SERVIÇO</span><h2>Do que você precisa ao próximo passo.</h2><p>As informações de cada serviço mostram o caminho específico.</p></div><ol className="access-steps"><li><span>1</span><div><h3>Escolha o serviço</h3><p>Use a busca guiada ou explore as áreas.</p></div></li><li><span>2</span><div><h3>Consulte as condições</h3><p>Confira público, requisitos, unidade e disponibilidade.</p></div></li><li><span>3</span><div><h3>Fale com a equipe ou agende</h3><p>Use o canal indicado na página do serviço para confirmar o próximo passo.</p></div></li></ol><Link href="/como-funciona" className="arrow-link">Entender como funciona <span>→</span></Link></section>
+    <section className="units-section" id="unidades"><div className="container section-space"><div className="section-header"><span className="eyebrow">UNIDADES</span><h2>Onde você pode encontrar atendimento</h2><p>Veja os endereços e consulte os serviços relacionados a cada unidade.</p></div><div className="card-grid three">{c.units.map((unit)=><article key={unit.id} className="card unit-card"><span className="unit-city">{unit.cidade}</span><h3>{unit.nome}</h3><p>{unit.endereco}</p><p className="unit-hours">{unit.horario}</p><div className="unit-tags">{unit.especialidades.slice(0,4).map((specialty)=><span key={specialty}>{specialty}</span>)}</div><Link href={`/unidades/${unit.id}`} className="arrow-link">Ver serviços desta unidade <span>→</span></Link></article>)}</div></div></section>
+    <section className="container section-space faq-section" id="duvidas"><div className="section-header"><span className="eyebrow">DÚVIDAS FREQUENTES</span><h2>Ficou com alguma pergunta?</h2><p>Veja respostas sobre utilização, agendamento e condições dos serviços.</p></div><div className="faqs">{c.faqs.slice(0,5).map((faq)=><details key={faq.id}><summary>{faq.pergunta}</summary><p>{faq.resposta}</p></details>)}</div><Link href="/duvidas" className="arrow-link spaced-link">Ver todas as dúvidas <span>→</span></Link></section>
+    <section className="container section-space bottom-spacer association-section"><div className="panel association-panel"><div><span className="eyebrow">ASSOCIAÇÃO</span><h2>Quer ter acesso aos serviços da AAPVR?</h2><p>Entenda quem pode se associar, como funcionam as categorias e quais condições precisam ser confirmadas antes da adesão.</p><Link className="button" href="/associacao">Entender como funciona <span>→</span></Link></div><div className="panel-icon" aria-hidden="true">AAPVR</div></div></section>
   </>;
 }
 function AreaIndex({c}:{c:Content}) {
@@ -111,7 +102,8 @@ function Associated({c}:{c:Content}) {
     ["Fazer uma reclamação ou sugestão","Registre a demanda na Ouvidoria.",contactHref("ouvidoria")],
     ["Falar sobre permanência ou cancelamento","Converse com Relacionamento para entender os próximos passos.",contactHref("relacionamento")]
   ];
-  return <div className="container page-space"><TitleSection eyebrow="JÁ SOU ASSOCIADO" title={t(c,"associado.titulo")} description={t(c,"associado.texto")}/><div className="card-grid two">{acts.map(([title,body,href])=><SectionCard key={title} title={title} body={body} href={href} cta="Ver caminho"/>)}</div></div>;
+  const actions=["Agendar consulta","Acessar canais do Call Center","Explorar serviços","Falar com a Secretaria","Consultar condições comerciais","Atualizar cadastro","Falar com a Ouvidoria","Conversar com Relacionamento"];
+  return <div className="container page-space"><TitleSection eyebrow="JÁ SOU ASSOCIADO" title={t(c,"associado.titulo")} description={t(c,"associado.texto")}/><div className="card-grid two">{acts.map(([title,body,href],index)=><SectionCard key={title} title={title} body={body} href={href} cta={actions[index]}/>)}</div></div>;
 }
 function FAQs({c}:{c:Content}) {
   return <div className="container narrow page-space"><TitleSection eyebrow="RESPOSTAS DIRETAS" title={t(c,"duvidas.titulo")}/><div className="faqs">{c.faqs.map(f=><details key={f.id}><summary>{f.pergunta}</summary><p>{f.resposta}</p></details>)}</div><Link className="button spaced-link" href="/contato">Minha dúvida é outra →</Link></div>;
