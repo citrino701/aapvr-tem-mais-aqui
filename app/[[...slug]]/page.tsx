@@ -60,7 +60,10 @@ function Area({c,id}:{c:Content;id:string}) {
   const a=c.categories.find(x=>x.id===id);
   if (!a) notFound();
   if (id==="saude") return <Health c={c}/>;
-  const selected=c.services.filter(s=>s.categoria===id);
+  const relatedCategoryIds = id === "terapias-reabilitacao" ? [id, "movimento"]
+    : id === "lazer" ? [id, "convivencia-aprendizado"]
+    : [id];
+  const selected=c.services.filter(s=>relatedCategoryIds.includes(s.categoria));
   return <div className="container page-space"><Breadcrumb items={[["Serviços","/servicos"],[a.nome,`/servicos/${id}`]]}/><TitleSection eyebrow="SERVIÇOS" title={t(c,`${id}.titulo`,a.nome)} description={a.resumo}/><div className="notice">As condições variam conforme serviço e unidade. Confirme requisitos e disponibilidade com o setor responsável.</div><div className="card-grid three">{selected.map(s=><CardService key={s.id} s={s}/>)}</div>{selected.length===0 && <div className="empty-state">Nenhuma opção publicada nesta categoria.</div>}<div className="bottom-actions"><Link href="/explorar" className="button secondary">Me ajude a encontrar →</Link><Link href="/contato" className="button">Encontrar um contato →</Link></div></div>;
 }
 function Health({c}:{c:Content}) {
