@@ -26,20 +26,28 @@ function TitleSection({eyebrow,title,description}:{eyebrow?:string;title:string;
   return <div className="title-section">{eyebrow && <div className="eyebrow">{eyebrow}</div>}<h1>{title}</h1>{description && <p className="lead">{description}</p>}</div>;
 }
 function SectionCard({title,body,href,cta}:{title:string;body:string;href:string;cta:string}) {
-  return <div className="card action-card"><h3>{title}</h3><p>{body}</p><Link className="arrow-link" href={href}>{cta} <span>→</span></Link></div>;
+  return <Link className="card action-card card-link" href={href}><h3>{title}</h3><p>{body}</p><span className="arrow-link">{cta} <span>→</span></span></Link>;
 }
 function Home({c}:{c:Content}) {
+  const paths = [
+    ["SAÚDE", "/servicos/saude"],
+    ["MOVIMENTO", "/servicos/movimento"],
+    ["CULTURA", "/servicos/convivencia-aprendizado"],
+    ["LAZER", "/servicos/lazer"],
+    ["ORIENTAÇÃO", "/servicos/orientacao-direitos"],
+    ["CONVIVÊNCIA", "/servicos/convivencia-aprendizado"],
+  ];
   const cards = [
-    ["Preciso de uma consulta","Veja as especialidades disponíveis em cada unidade e entenda como funciona o agendamento.","/servicos/saude"],
-    ["Quero cuidar do corpo e da mente","Conheça fisioterapias, psicologia, acupuntura, osteopatia e outras possibilidades de cuidado.","/servicos/terapias-reabilitacao"],
-    ["Quero me movimentar","Veja hidroginástica, Pilates, musculação, ginástica, yoga, futebol e dança.","/servicos/movimento"],
-    ["Quero aprender e conviver","Explore oficinas, coral, inclusão digital, Cultura Viva, teatro, bordado e encontros.","/servicos/convivencia-aprendizado"],
-    ["Quero aproveitar meu tempo livre","Conheça a Sede Campestre, os bailes e outras opções de lazer.","/servicos/lazer"],
-    ["Preciso de orientação","Encontre Assistência Social, Jurídico, Previdenciário, Secretaria e Ouvidoria.","/servicos/orientacao-direitos"],
+    ["Preciso de uma consulta","Veja as especialidades disponíveis em cada unidade e entenda como funciona o agendamento.","/servicos/saude","Ver especialidades"],
+    ["Quero cuidar do corpo e da mente","Conheça fisioterapias, psicologia, acupuntura, osteopatia e outras possibilidades de cuidado.","/servicos/terapias-reabilitacao","Ver terapias e reabilitação"],
+    ["Quero me movimentar","Veja hidroginástica, Pilates, musculação, ginástica, yoga, futebol e dança.","/servicos/movimento","Ver atividades"],
+    ["Quero aprender e conviver","Explore oficinas, coral, inclusão digital, Cultura Viva, teatro, bordado e encontros.","/servicos/convivencia-aprendizado","Ver oficinas e projetos"],
+    ["Quero aproveitar meu tempo livre","Conheça a Sede Campestre, os bailes e outras opções de lazer.","/servicos/lazer","Ver lazer"],
+    ["Preciso de orientação","Encontre Assistência Social, Jurídico, Previdenciário, Secretaria e Ouvidoria.","/servicos/orientacao-direitos","Encontrar orientação"],
   ];
   return <>
-    <section className="hero"><div className="container hero-inner"><div><div className="eyebrow">{t(c,"hero.selo")}</div><h1>{t(c,"hero.titulo")}</h1><p className="lead">{t(c,"hero.texto")}</p><div className="button-row"><TrackLink href="/explorar" event="interest_selected" params={{source:"homepage"}} className="button">Encontrar um serviço <span>→</span></TrackLink><Link href="/associacao" className="button secondary">Entender a associação</Link></div><p className="hero-note">{t(c,"hero.nota")}</p></div><div className="hero-visual" aria-hidden="true"><span>CONSULTAS</span><span>TERAPIAS</span><span>ATIVIDADES</span><span>CONVIVÊNCIA</span><span>LAZER</span><span>ORIENTAÇÃO</span><strong>TEM<br/>MAIS<br/>AQUI</strong></div></div></section>
-    <section className="container section-space"><div className="section-header"><span className="eyebrow">POR ONDE COMEÇAR</span><h2>{t(c,"home.titulo_opcoes")}</h2></div><div className="card-grid three">{cards.map(([title,body,href],i)=><SectionCard key={href} title={t(c,`home.card.${i+1}.titulo`,title)} body={t(c,`home.card.${i+1}.texto`,body)} href={href} cta="Ver opções"/>)}</div></section>
+    <section className="hero"><div className="container hero-inner"><div className="hero-copy"><div className="eyebrow">{t(c,"hero.selo")}</div><h1>{t(c,"hero.titulo")}</h1><p className="lead">{t(c,"hero.texto")}</p><div className="button-row"><TrackLink href="/explorar" event="interest_selected" params={{source:"homepage"}} className="button">Encontrar um serviço <span>→</span></TrackLink><Link href="/associacao" className="button secondary">Entender a associação</Link></div><p className="hero-note">{t(c,"hero.nota")}</p></div><div className="hero-visual"><span className="hero-art-kicker" aria-hidden="true">AAPVR · TEM MAIS AQUI</span><div className="hero-art-orbit" aria-label="Explorar por área">{paths.map(([name,href])=><Link key={name} href={href}>{name}</Link>)}</div><span className="hero-art-plus" aria-hidden="true">+</span><span className="hero-art-caption" aria-hidden="true">Diferentes caminhos.<br/>Um lugar para começar.</span></div></div></section>
+    <section className="container section-space home-options"><div className="section-header"><span className="eyebrow">POR ONDE COMEÇAR</span><h2>{t(c,"home.titulo_opcoes")}</h2><p>Escolha pelo que você precisa. Cada caminho mostra as condições e o próximo passo.</p></div><div className="card-grid three">{cards.map(([title,body,href,cta],i)=><div className="home-option" key={href}><span className="home-option-number" aria-hidden="true">{String(i+1).padStart(2,"0")}</span><SectionCard title={t(c,`home.card.${i+1}.titulo`,title)} body={t(c,`home.card.${i+1}.texto`,body)} href={href} cta={cta}/></div>)}</div></section>
     <section className="soft-section"><div className="container split-callout"><div><span className="eyebrow">DESCUBRA OUTRAS POSSIBILIDADES</span><h2>{t(c,"home.mais_titulo")}</h2><p>{t(c,"home.mais_texto")}</p></div><Link className="button" href="/servicos">Conhecer tudo o que existe →</Link></div></section>
     <section className="container section-space"><div className="section-header"><span className="eyebrow">INFORMAÇÃO CLARA</span><h2>{t(c,"home.regras_titulo")}</h2></div><div className="card-grid two">
       <div className="card"><h3>A AAPVR não é plano de saúde</h3><p>O atendimento é ambulatorial e eletivo. Não oferece pronto atendimento, internação ou cirurgia hospitalar.</p></div>

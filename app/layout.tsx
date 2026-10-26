@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { getContent, t } from "@/lib/data";
+import NavigationFeedback from "@/components/NavigationFeedback";
 import "./globals.css";
+import "./campaign.css";
 
 export const metadata: Metadata = {
   title: { default: "TEM MAIS AQUI | AAPVR", template: "%s | TEM MAIS AQUI" },
@@ -20,10 +22,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html lang="pt-BR">
       <body>
+        <NavigationFeedback />
         <div className="top-strip">AAPVR <span>•</span> TEM MAIS AQUI</div>
         <header className="site-header">
           <div className="container header-inner">
-            <Link href="/" className="brand" aria-label="AAPVR, início"><span className="brand-mark">A</span><span>AAPVR<small>TEM MAIS AQUI</small></span></Link>
+            <Link href="/" className="brand" aria-label="AAPVR, início"><span className="brand-wordmark">AAPVR<small>TEM MAIS AQUI</small></span></Link>
             <nav className="desktop-nav" aria-label="Navegação principal">
               {nav.map(([key, href]) => <Link key={href} href={href} className={href==="/associacao" ? "nav-cta" : ""}>{t(c,key)}</Link>)}
             </nav>
