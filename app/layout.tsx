@@ -28,7 +28,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <header className="site-header">
           <div className="container header-inner">
             <Link href="/" className="brand" aria-label="AAPVR, início">
-              <span className="brand-aapvr">AAPVR<small>ASSOCIAÇÃO</small></span>
+              <Image className="brand-aapvr-logo" src="/brand/aapvr.svg" alt="AAPVR — Associação dos Aposentados e Pensionistas de Volta Redonda" width={136} height={54} priority />
               <span className="brand-divider" aria-hidden="true" />
               <Image className="brand-campaign-logo" src="/brand/tem-mais-aqui.svg" alt="Tem Mais Aqui" width={154} height={78} priority />
             </Link>
@@ -43,8 +43,8 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <footer className="site-footer">
           <div className="container footer-inner">
             <div className="footer-brand-lockup">
-              <span className="footer-aapvr">AAPVR<small>ASSOCIAÇÃO</small></span>
-              <Image src="/brand/tem-mais-aqui.svg" alt="Tem Mais Aqui" width={150} height={76} />
+              <Image className="footer-aapvr-logo" src="/brand/aapvr.svg" alt="AAPVR — Associação dos Aposentados e Pensionistas de Volta Redonda" width={142} height={56} />
+              <Image className="brand-campaign-logo" src="/brand/tem-mais-aqui.svg" alt="Tem Mais Aqui" width={150} height={76} />
             </div>
             <p>{t(c,"rodape.aviso")}</p>
             <Link className="footer-cta" href="/contato">Encontrar o setor certo <span aria-hidden="true">↗</span></Link>
