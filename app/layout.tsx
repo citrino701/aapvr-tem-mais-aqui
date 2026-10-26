@@ -16,10 +16,9 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const c = await getContent();
   const nav = [
-    ["nav.inicio", "/"], ["nav.explorar", "/explorar"],
-    ["nav.servicos", "/servicos"], ["nav.como", "/como-funciona"],
-    ["nav.unidades", "/unidades"], ["nav.duvidas", "/duvidas"],
-    ["nav.associado", "/associado"], ["nav.associacao", "/associacao"],
+    ["Serviços", "/servicos"], ["Quem pode utilizar", "/#quem-pode-utilizar"],
+    ["Unidades", "/#unidades"], ["Como acessar", "/#como-acessar"],
+    ["Dúvidas", "/#duvidas"],
   ];
   return (
     <html lang="pt-BR">
@@ -29,13 +28,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           <div className="container header-inner">
             <Link href="/" className="brand" aria-label="AAPVR, início">
               <Image className="brand-aapvr-logo" src="/brand/aapvr.svg" alt="AAPVR — Associação dos Aposentados e Pensionistas de Volta Redonda" width={136} height={54} priority />
-              <span className="brand-divider" aria-hidden="true" />
-              <Image className="brand-campaign-logo" src="/brand/tem-mais-aqui.svg" alt="Tem Mais Aqui" width={154} height={78} priority />
             </Link>
             <nav className="desktop-nav" aria-label="Navegação principal">
-              {nav.map(([key, href]) => <Link key={href} href={href} className={href==="/associacao" ? "nav-cta" : ""}>{t(c,key)}</Link>)}
+              {nav.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
             </nav>
-            <details className="mobile-nav"><summary aria-label="Abrir menu">☰ Menu</summary><nav>{nav.map(([key,href]) => <Link key={href} href={href}>{t(c,key)}</Link>)}</nav></details>
+            <details className="mobile-nav"><summary aria-label="Abrir menu">☰ Menu</summary><nav>{nav.map(([label,href]) => <Link key={href} href={href}>{label}</Link>)}</nav></details>
           </div>
         </header>
         {!c.cmsOnline && <div className="demo-banner" role="status"><div className="container">Versão de demonstração. Informações operacionais e contatos precisam de confirmação antes da publicação.</div></div>}
@@ -51,7 +48,6 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           </div>
           <div className="container footer-bottom"><span>Associação dos Aposentados e Pensionistas de Volta Redonda</span><Link href="/">Voltar ao início ↑</Link></div>
         </footer>
-        <Link href="/explorar" className="mobile-cta">Encontrar um serviço <span>→</span></Link>
       </body>
     </html>
   );
