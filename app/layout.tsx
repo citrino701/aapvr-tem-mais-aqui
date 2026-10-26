@@ -45,7 +45,6 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
               <Image className="brand-campaign-logo" src="/brand/tem-mais-aqui.svg" alt="Tem Mais Aqui" width={150} height={76} />
             </div>
             <p>{t(c,"rodape.aviso")}</p>
-            <Link className="footer-cta" href="/contato">Encontrar o setor certo <span aria-hidden="true">↗</span></Link>
           </div>
           <div className="container footer-social"><strong>Acompanhe a AAPVR:</strong>{[["Instagram",t(c,"social.instagram.url")],["Facebook",t(c,"social.facebook.url")],["Canal no WhatsApp",t(c,"social.whatsapp.url")]].filter(([,url])=>/^https?:\/\//i.test(url)).map(([label,url])=><a href={url} key={label} target="_blank" rel="noopener noreferrer">{label}</a>)}</div>
           <div className="container footer-bottom"><span>Associação dos Aposentados e Pensionistas de Volta Redonda</span><Link href="/">Voltar ao início ↑</Link></div>

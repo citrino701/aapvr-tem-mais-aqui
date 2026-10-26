@@ -217,7 +217,7 @@ body {
 .area-card p { color: #5b7184; }
 .area-icon { display: grid; place-items: center; width: 43px; height: 43px; margin-bottom: 17px; border-radius: 14px; background: #e7f3fa; color: #126caf; font-size: 1.3rem; font-weight: 800; }
 .all-services-link { display: inline-flex; align-items: center; gap: 12px; margin-top: 25px; color: #126caf; font-weight: 800; }
-.soft-section.eligibility-section { padding: 76px 0; color: white; background: linear-gradient(115deg, #063864 0%, #07558e 50%, #0d6ca8 100%); }
+.soft-section.eligibility-section { padding: 76px 0; color: white; background: linear-gradient(115deg, #08457c 0%, #09659b 52%, #157caf 100%); }
 .eligibility-inner { display: grid; grid-template-columns: minmax(0,.72fr) minmax(0,1.28fr); gap: 56px; align-items: start; }
 .eligibility-section .eyebrow { color: #a9daf4; }
 .eligibility-section h2 { max-width: 460px; color: #fff; }
@@ -251,7 +251,7 @@ body {
 .association-section .association-panel h2 { color: #073b70; }
 .association-section .association-panel p { max-width: 720px; color: #4e687d; }
 .association-section .panel-icon { border-radius: 24px; background: linear-gradient(145deg, #0f6ead, #063d70); color: #fff; font-size: 1.55rem; letter-spacing: -.04em; }
-.site-footer { background: linear-gradient(115deg, #052e55 0%, #06477c 48%, #0b6098 100%); }
+.site-footer { background: linear-gradient(115deg, #052e55 0%, #07527b 48%, #155f99 100%); }
 .site-footer .footer-cta { color: #fff; }
 .site-footer .footer-bottom a { color: #b9e2f7; }
 .mobile-cta { background: linear-gradient(110deg, #126caf, #073b70); }
@@ -313,7 +313,7 @@ body {
 .mobile-nav summary { color: #f5faff; }
 .hero {
   color: #fff;
-  background: linear-gradient(118deg, #06345f 0%, #07548d 52%, #0875ad 100%);
+  background: linear-gradient(118deg, #06345f 0%, #07548d 48%, #0a80a8 100%);
   border-bottom: 1px solid #277caf;
 }
 .hero:before { opacity: .12; background-image: radial-gradient(#d4efff 1px, transparent 1px); }
@@ -346,7 +346,7 @@ body {
 .association-paths { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
 .association-paths .button { white-space: nowrap; }
 .association-paths .button.secondary { color: #0a5289; border-color: #c7dfef; background: #fff; }
-.site-footer { background: linear-gradient(115deg, #052e55 0%, #06477c 48%, #0b6098 100%); }
+.site-footer { background: linear-gradient(115deg, #052e55 0%, #07527b 48%, #155f99 100%); }
 .site-footer:before { background-image: radial-gradient(#d6efff 1px, transparent 1px); }
 .site-footer p { color: #e0f0fa; }
 .site-footer .footer-cta { color: #073b70; border-color: #d4efff75; background: linear-gradient(120deg, #d8f1ff, #fff); }
@@ -402,3 +402,37 @@ body {
   .hero-actions { flex-direction: column; align-items: stretch; }
   .hero-actions .button { justify-content: center; }
 }
+
+
+/* Ajustes solicitados para a primeira dobra. */
+.hero-layout { position: relative; isolation: isolate; }
+.hero-layout .hero-copy { position: relative; z-index: 2; padding: clamp(22px, 3vw, 38px); border: 1px solid #d6efff28; border-radius: 24px; background: #073b708f; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 18px 48px #002e4a18; }
+.hero-portrait { position: absolute; z-index: 1; inset: -8px -3% -20px 20%; width: auto; height: auto; min-height: 0; margin: 0; overflow: hidden; opacity: .46; pointer-events: none; filter: blur(5px); }
+.hero-portrait img { width: 100%; height: 100%; max-height: none; object-fit: contain; object-position: right center; filter: none; mask-image: linear-gradient(to right, transparent 0%, #000 28%, #000 100%); }
+.hero-layout .hero-copy .hero-note { position: relative; z-index: 2; margin: 0; }
+.hero-finder { margin-top: 38px; }
+.hero .guided-finder { border: 2px solid #69b8e8; border-radius: 26px; background: linear-gradient(145deg, #fff 0%, #f2f9fe 100%); box-shadow: 0 22px 70px #001f3a45, 0 0 0 6px #ffffff12; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+.hero .finder-cover { min-height: 250px; padding-top: 12px; justify-content: center; }
+.hero .finder-cover h2 { font-size: clamp(1.8rem, 3.2vw, 2.6rem); }
+.hero .finder-cover p { max-width: 560px; font-size: 1rem; }
+.hero .finder-start { position: relative; overflow: hidden; isolation: isolate; padding: 16px 24px; color: #fff; background: linear-gradient(115deg, #073b70 0%, #0c6eaa 48%, #1688c4 100%); box-shadow: 0 10px 28px #07558e45; animation: finder-glow 2.4s ease-in-out infinite; }
+.hero .finder-start:hover { color: #fff; background: linear-gradient(115deg, #062f59, #07558e 55%, #0b75b2); }
+.hero .finder-start::after { content: ""; position: absolute; z-index: -1; inset: -45% auto -45% -55%; width: 42%; transform: skewX(-20deg); background: linear-gradient(90deg, transparent, #ffffffb0, transparent); animation: finder-shine 2.8s ease-in-out infinite; }
+@keyframes finder-shine { 0%, 35% { left: -55%; } 75%, 100% { left: 125%; } }
+@keyframes finder-glow { 0%, 100% { box-shadow: 0 10px 24px #07558e35, 0 0 0 0 #46baff00; } 50% { box-shadow: 0 12px 32px #07558e75, 0 0 0 6px #46baff25; } }
+@media (prefers-reduced-motion: reduce) { .hero .finder-start, .hero .finder-start::after { animation: none; } }
+.footer-inner { grid-template-columns: auto minmax(240px, 1fr); }
+@media(max-width:700px) {
+  .hero-layout { min-height: 0; padding-top: 30px; }
+  .hero-layout .hero-copy { padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .hero-portrait { display: none !important; }
+  .hero-finder { margin-top: 28px; }
+  .hero .finder-cover { min-height: 240px; }
+}
+
+
+/* Selo ampliado da AAPVR no canto do primeiro bloco. */
+.hero-layout::after { content: ""; position: absolute; z-index: 2; top: -48px; right: -68px; width: clamp(190px, 24vw, 320px); aspect-ratio: 1; pointer-events: none; background: url("/brand/aapvr-mark.svg") center / contain no-repeat; opacity: .17; filter: blur(3px); transform: scale(1.08); }
+.hero-layout .hero-copy { z-index: 3; }
+@media(max-width:990px) { .hero-layout::after { top: -32px; right: -38px; width: 235px; opacity: .14; } }
+@media(max-width:700px) { .hero-layout::after { top: -18px; right: -16px; width: 150px; opacity: .11; filter: blur(2px); } }
