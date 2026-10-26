@@ -58,7 +58,7 @@ export default function GuidedFinder({ content }: { content: Content }) {
         units: serviceUnits(service),
       }));
 
-    return matches.slice(0, needId === "tudo" ? 12 : 9);
+    return matches;
   }, [content, need, needId, unitId]);
 
   const unitOptions = useMemo(() => {
