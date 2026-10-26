@@ -17,7 +17,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const c = await getContent();
   const nav = [
     ["Serviços", "/servicos"], ["Quem pode utilizar", "/#quem-pode-utilizar"],
-    ["Unidades", "/#unidades"], ["Como acessar", "/#como-acessar"],
+    ["Unidades", "/#unidades"], ["Como acessar", "/como-funciona"],
     ["Dúvidas", "/#duvidas"],
   ];
   return (
@@ -32,6 +32,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
             <nav className="desktop-nav" aria-label="Navegação principal">
               {nav.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
             </nav>
+            <Link className="header-member-link" href="/associado">Sou associado <span aria-hidden="true">→</span></Link>
             <details className="mobile-nav"><summary aria-label="Abrir menu">☰ Menu</summary><nav>{nav.map(([label,href]) => <Link key={href} href={href}>{label}</Link>)}</nav></details>
           </div>
         </header>
@@ -46,6 +47,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
             <p>{t(c,"rodape.aviso")}</p>
             <Link className="footer-cta" href="/contato">Encontrar o setor certo <span aria-hidden="true">↗</span></Link>
           </div>
+          <div className="container footer-social"><strong>Acompanhe a AAPVR:</strong>{[["Instagram",t(c,"social.instagram.url")],["Facebook",t(c,"social.facebook.url")],["Canal no WhatsApp",t(c,"social.whatsapp.url")]].filter(([,url])=>/^https?:\/\//i.test(url)).map(([label,url])=><a href={url} key={label} target="_blank" rel="noopener noreferrer">{label}</a>)}</div>
           <div className="container footer-bottom"><span>Associação dos Aposentados e Pensionistas de Volta Redonda</span><Link href="/">Voltar ao início ↑</Link></div>
         </footer>
       </body>

@@ -26,6 +26,7 @@ export default function GuidedFinder({ content }: { content: Content }) {
   const [needId, setNeedId] = useState<string | null>(null);
   const [unitId, setUnitId] = useState<string | null>(null);
   const [showResults, setShowResults] = useState(false);
+  const [started, setStarted] = useState(false);
   const need = needs.find((item) => item.id === needId);
 
   const results = useMemo(() => {
@@ -84,22 +85,26 @@ export default function GuidedFinder({ content }: { content: Content }) {
     setNeedId(id);
     setUnitId(null);
     setShowResults(false);
+    setStarted(true);
   }
 
   function reset() {
     setNeedId(null);
     setUnitId(null);
     setShowResults(false);
+    setStarted(false);
   }
 
   return (
     <section className="guided-finder" aria-labelledby="finder-title">
       <div className="finder-topline">
-        <span className="finder-step">{need ? (showResults ? "2 de 2" : "2 de 2") : "1 de 2"}</span>
+        <span className="finder-step">{started ? (need ? "2 de 2" : "1 de 2") : "COMECE AQUI"}</span>
         <span className="finder-kicker">BUSCA GUIADA</span>
       </div>
 
-      {!need && <div className="finder-stage" key="need">
+      {!started && <div className="finder-stage finder-cover" key="cover"><span className="finder-cover-icon" aria-hidden="true">＋</span><h2 id="finder-title">Encontre o serviço certo para você</h2><p>Responda a duas perguntas rápidas. A gente mostra as opções, unidades e os próximos passos.</p><button type="button" className="button finder-start" onClick={() => setStarted(true)}>Iniciar busca <span aria-hidden="true">→</span></button></div>}
+
+      {started && !need && <div className="finder-stage" key="need">
         <h2 id="finder-title">O que você precisa hoje?</h2>
         <p>Escolha pelo que quer fazer. A gente ajuda a encontrar por onde começar.</p>
         <div className="finder-needs" role="list" aria-label="Escolha uma necessidade">
