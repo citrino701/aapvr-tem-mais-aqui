@@ -57,7 +57,10 @@
     "contato.texto": "Escolha uma opção para falar com o setor certo.",
     "historias.titulo": "Quem usa conta melhor.",
     "historias.texto": "Depoimentos reais e autorizados serão publicados aqui. Nenhum depoimento de demonstração será exibido.",
-    "rodape.aviso": "As informações podem mudar. Confirme agenda, vagas e documentos com o setor responsável antes de comparecer. Para condições comerciais, fale com o Comercial."
+    "rodape.aviso": "As informações podem mudar. Confirme agenda, vagas e documentos com o setor responsável antes de comparecer. Para condições comerciais, fale com o Comercial.",
+    "social.instagram.url": "",
+    "social.facebook.url": "",
+    "social.whatsapp.url": ""
   },
   "categories": [
     {
