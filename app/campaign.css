@@ -436,3 +436,39 @@ body {
 .hero-layout .hero-copy { z-index: 3; }
 @media(max-width:990px) { .hero-layout::after { top: -32px; right: -38px; width: 235px; opacity: .14; } }
 @media(max-width:700px) { .hero-layout::after { top: -18px; right: -16px; width: 150px; opacity: .11; filter: blur(2px); } }
+
+
+/* Assinatura visual própria para os cards de cada rede. */
+.social-card { border-width: 1px; }
+.social-card-instagram { border-color: #ead7eb; background: linear-gradient(145deg, #fff5fb 0%, #fff 88%); }
+.social-card-facebook { border-color: #d5e3fb; background: linear-gradient(145deg, #f1f6ff 0%, #fff 88%); }
+.social-card-whatsapp { border-color: #ccebd7; background: linear-gradient(145deg, #effcf4 0%, #fff 88%); }
+.social-card-heading { display: flex; align-items: center; gap: 13px; margin-bottom: 13px; }
+.social-card-heading h3 { margin: 0; }
+.social-brand-icon { display: grid; place-items: center; width: 48px; height: 48px; flex: 0 0 48px; border-radius: 15px; color: #fff; box-shadow: 0 7px 17px #17334d20; }
+.social-brand-icon svg { display: block; width: 25px; height: 25px; }
+.social-brand-icon-instagram { background: linear-gradient(140deg, #833ab4 0%, #e1306c 50%, #f77737 100%); }
+.social-brand-icon-facebook { background: #1877f2; }
+.social-brand-icon-whatsapp { background: #25d366; }
+.social-card-instagram:hover { border-color: #d9b3dc; }
+.social-card-facebook:hover { border-color: #a9c6f7; }
+.social-card-whatsapp:hover { border-color: #8dd4a8; }
+
+
+/* Identificação visual dos canais sociais. */
+.social-card { border-color: #e3ebf1; }
+.social-card--instagram { background: linear-gradient(145deg, #fffafd, #fff); }
+.social-card--facebook { background: linear-gradient(145deg, #f4f8ff, #fff); }
+.social-card--whatsapp { background: linear-gradient(145deg, #f4fcf7, #fff); }
+.social-card-heading { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.social-card-heading .social-card-label { display: block; margin: 0 0 5px; }
+.social-card-heading h3 { margin: 0; }
+.social-card-icon { display: grid; place-items: center; width: 52px; height: 52px; flex: 0 0 auto; border-radius: 16px; color: #fff; box-shadow: 0 7px 16px #17334d20; }
+.social-card-icon svg { display: block; width: 27px; height: 27px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.social-icon-dot,.social-icon-fill { fill: currentColor; stroke: none; }
+.social-card-icon--instagram { background: linear-gradient(145deg, #833ab4, #fd1d1d 58%, #fcb045); }
+.social-card-icon--facebook { background: #1877f2; }
+.social-card-icon--whatsapp { background: #25d366; }
+.social-card--instagram:hover { border-color: #d9a6d5; }
+.social-card--facebook:hover { border-color: #9ec4fb; }
+.social-card--whatsapp:hover { border-color: #8cdbaa; }
