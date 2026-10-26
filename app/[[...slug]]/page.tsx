@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getContent, t, slugify, serviceHref, contactHref, type Content, type Service, type Unit } from "@/lib/data";
+import { t, slugify, serviceHref, contactHref, type Content, type Service, type Unit } from "@/lib/data";
+import { getContent } from "@/lib/cms";
 import Explorer from "@/components/Explorer";
 import ContactChooser from "@/components/ContactChooser";
 import TrackLink from "@/components/TrackLink";
