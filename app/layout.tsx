@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { getContent, t } from "@/lib/data";
+import { t } from "@/lib/data";
+import { getContent } from "@/lib/cms";
 import NavigationFeedback from "@/components/NavigationFeedback";
 import "./globals.css";
 import "./campaign.css";
