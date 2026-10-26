@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { t } from "@/lib/data";
 import { getContent } from "@/lib/cms";
@@ -24,10 +25,13 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     <html lang="pt-BR">
       <body>
         <NavigationFeedback />
-        <div className="top-strip">AAPVR <span>•</span> TEM MAIS AQUI</div>
         <header className="site-header">
           <div className="container header-inner">
-            <Link href="/" className="brand" aria-label="AAPVR, início"><span className="brand-wordmark">AAPVR<small>TEM MAIS AQUI</small></span></Link>
+            <Link href="/" className="brand" aria-label="AAPVR, início">
+              <span className="brand-aapvr">AAPVR<small>ASSOCIAÇÃO</small></span>
+              <span className="brand-divider" aria-hidden="true" />
+              <Image className="brand-campaign-logo" src="/brand/tem-mais-aqui.svg" alt="Tem Mais Aqui" width={154} height={78} priority />
+            </Link>
             <nav className="desktop-nav" aria-label="Navegação principal">
               {nav.map(([key, href]) => <Link key={href} href={href} className={href==="/associacao" ? "nav-cta" : ""}>{t(c,key)}</Link>)}
             </nav>
@@ -36,7 +40,17 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         </header>
         {!c.cmsOnline && <div className="demo-banner" role="status"><div className="container">Versão de demonstração. Informações operacionais e contatos precisam de confirmação antes da publicação.</div></div>}
         <main id="principal">{children}</main>
-        <footer className="site-footer"><div className="container footer-inner"><div><strong>AAPVR · TEM MAIS AQUI</strong><p>{t(c,"rodape.aviso")}</p></div><Link href="/contato">Encontrar o setor certo ↗</Link></div></footer>
+        <footer className="site-footer">
+          <div className="container footer-inner">
+            <div className="footer-brand-lockup">
+              <span className="footer-aapvr">AAPVR<small>ASSOCIAÇÃO</small></span>
+              <Image src="/brand/tem-mais-aqui.svg" alt="Tem Mais Aqui" width={150} height={76} />
+            </div>
+            <p>{t(c,"rodape.aviso")}</p>
+            <Link className="footer-cta" href="/contato">Encontrar o setor certo <span aria-hidden="true">↗</span></Link>
+          </div>
+          <div className="container footer-bottom"><span>Associação dos Aposentados e Pensionistas de Volta Redonda</span><Link href="/">Voltar ao início ↑</Link></div>
+        </footer>
         <Link href="/explorar" className="mobile-cta">Encontrar um serviço <span>→</span></Link>
       </body>
     </html>
