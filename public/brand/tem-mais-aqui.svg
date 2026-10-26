@@ -3,7 +3,7 @@
   <defs>
     <style>
       .cls-1 {
-        fill: #8ebc00;
+        fill: #62b8e8;
       }
 
       .cls-2 {
@@ -43,8 +43,8 @@
       }
     </style>
     <linearGradient id="Gradiente_sem_nome_255" data-name="Gradiente sem nome 255" x1="129.3" y1="32.61" x2="208.47" y2="32.61" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#acff00"/>
-      <stop offset="1" stop-color="#14ff00"/>
+      <stop offset="0" stop-color="#83d2f5"/>
+      <stop offset="1" stop-color="#1689d0"/>
     </linearGradient>
     <linearGradient id="Gradiente_sem_nome_255-2" data-name="Gradiente sem nome 255" x1="145.74" y1="44.8" x2="191.28" y2="44.8" xlink:href="#Gradiente_sem_nome_255"/>
     <linearGradient id="Gradiente_sem_nome_255-3" data-name="Gradiente sem nome 255" x1="156.9" y1="26.59" x2="171.01" y2="26.59" xlink:href="#Gradiente_sem_nome_255"/>
