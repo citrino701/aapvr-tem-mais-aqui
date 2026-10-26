@@ -300,129 +300,81 @@ body {
   .hero-visual .hero-art-plus { font-size: 9rem; }
 }
 
-/* Identidade Tem Mais Aqui: verdes da marca, brilho lima e base clara. */
-:root {
-  --brand-forest: #174900;
-  --brand-green: #3a7900;
-  --brand-lime: #a8f000;
-  --brand-lime-bright: #20d916;
-  --brand-ink: #203511;
-  --brand-paper: #f7f9ef;
-  --brand-line: #dce8ca;
-  --navy: #1d4700;
-  --navy2: #326500;
-  --dark: #203511;
-  --text: #405538;
-  --sea: #397300;
-  --mint: #edf5df;
-  --canvas: #f7f9ef;
-  --border: #dce8ca;
-  --yellow: #eaffae;
-  --coral: #b3ee36;
-}
 
-body {
-  color: var(--brand-ink);
-  background:
-    radial-gradient(ellipse at 0% 22%, #dff1bd 0, transparent 38rem),
-    radial-gradient(ellipse at 100% 72%, #e9f4d2 0, transparent 34rem),
-    linear-gradient(180deg, #fbfcf7 0%, #f5f8ec 52%, #fbfcf8 100%);
-}
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 15;
-  color: #fff;
-  background:
-    radial-gradient(ellipse at 12% 0%, #6fa90099, transparent 36%),
-    linear-gradient(112deg, #183d00 0%, #245800 48%, #174500 100%);
-  border-bottom: 1px solid #a8f00070;
-  box-shadow: 0 10px 30px #173c001c;
-}
-.header-inner { min-height: 94px; gap: 26px; }
-.brand { min-width: 245px; gap: 15px; color: #fff; }
-.brand-aapvr-logo { display: block; width: 128px; height: auto; object-fit: contain; }
-.brand-divider { width: 1px; height: 42px; background: linear-gradient(180deg, transparent, #d1ff8caa, transparent); }
-.brand-campaign-logo { width: 126px; height: auto; object-fit: contain; }
-.desktop-nav { gap: 14px; }
-.desktop-nav a { color: #f3f9e8; font-size: .76rem; transition: color .15s ease, background .15s ease; }
-.desktop-nav a:hover { color: var(--brand-lime); }
-.desktop-nav .nav-cta { color: #193d00; background: linear-gradient(120deg, #c8fb68, #8ee400); box-shadow: 0 6px 20px #b2f7312b; }
-.desktop-nav .nav-cta:hover { color: #183b00; background: #d9ff9d; }
-.mobile-nav summary { color: #f4f9e9; }
-.mobile-nav nav { color: var(--brand-ink); }
-.mobile-nav nav a { color: var(--brand-ink); }
-.mobile-cta { background: linear-gradient(110deg, #347000, #1d4e00); border-top: 1px solid #a8f00070; }
-
+/* Ajustes de leitura, capa da busca e canais sociais. */
+.site-header { position: sticky; top: 0; z-index: 15; color: #fff; }
+.header-inner { min-height: 92px; gap: clamp(16px, 2vw, 28px); }
+.brand { min-width: 132px; }
+.desktop-nav { gap: clamp(12px, 1.35vw, 20px); }
+.desktop-nav a { color: #f5faff; font-size: clamp(.94rem, 1.05vw, 1.08rem); font-weight: 700; white-space: nowrap; }
+.desktop-nav a:hover { color: #b7e3fb; }
+.header-member-link { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px; padding: 11px 14px; border: 1px solid #b5dff650; border-radius: 11px; background: #ffffff15; color: #fff; font-size: .9rem; font-weight: 800; white-space: nowrap; }
+.header-member-link:hover { background: #ffffff25; }
+.mobile-nav summary { color: #f5faff; }
 .hero {
-  background:
-    radial-gradient(ellipse at 0% 100%, #d4ecad 0, transparent 45%),
-    radial-gradient(ellipse at 92% 4%, #ebf4d7 0, transparent 42%),
-    linear-gradient(120deg, #f6f9ee 0%, #fbfcf7 58%, #eef5e1 100%);
-  border-bottom-color: #d9e8c4;
+  color: #fff;
+  background: linear-gradient(118deg, #06345f 0%, #07548d 52%, #0875ad 100%);
+  border-bottom: 1px solid #277caf;
 }
-.hero:before { opacity: .2; background-image: radial-gradient(#4e870b 1px, transparent 1px); }
-.hero .eyebrow { color: #347000; }
-.hero .eyebrow:before { color: #183d00; background: linear-gradient(135deg, #c5f45b, #81d900); }
-.hero h1 { color: #214500; }
-.hero .lead { color: #465b37; }
-.hero-note { border-color: #83cb13; color: #526441; }
-.hero .button { background: linear-gradient(120deg, #3a7900, #245800); }
-.hero .button:hover { background: #1e4b00; }
-.hero .button.secondary { color: #2b5900; border-color: #cbdcae; background: #fff; }
-.hero-visual { background: linear-gradient(150deg, #214b00, #397200 58%, #153d00); box-shadow: 0 34px 65px #3264002b; }
-.hero-visual:before, .hero-visual:after { border-color: #b8ef6370; }
-.hero-visual .hero-art-orbit a { background: #386d0c; border-color: #b5ea7499; }
-.hero-visual .hero-art-orbit a:hover, .hero-visual .hero-art-orbit a:focus-visible { background: #548c14; }
-.hero-visual .hero-art-plus { color: #c8f171; }
-
-.home-options .section-header p { color: #536548; }
-.home-option-number { color: #4d820e; }
-.home-option .card:hover { border-color: #a7cb72; box-shadow: 0 16px 36px #34590018; }
-.home-option .card h3 { color: #254800; }
-.home-option .card p { color: #58694c; }
-.soft-section { background: linear-gradient(112deg, #173f00 0%, #285900 56%, #1b4700 100%); }
-.soft-section .eyebrow { color: #c9ff72; }
-.soft-section .button { color: #1e4300; background: linear-gradient(120deg, #c9f66c, #8ee000); }
-.soft-section .button:hover { background: #dfff9e; }
-.association-panel { background: linear-gradient(135deg, #f0f6e5, #e4efd2); border-color: #d3e3bb; }
-.panel-icon { color: #274d00; background: linear-gradient(145deg, #d2f187, #a8df46); }
-
-.site-footer {
-  position: relative;
-  overflow: hidden;
-  padding: 49px 0 22px;
-  color: #f6faee;
-  background:
-    radial-gradient(ellipse at 88% 0%, #4e92008c, transparent 38%),
-    linear-gradient(115deg, #153800 0%, #225300 46%, #173f00 100%);
-}
-.site-footer:before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .15; background-image: radial-gradient(#d5ff8c 1px, transparent 1px); background-size: 25px 25px; mask-image: linear-gradient(110deg, transparent 15%, #000 100%); }
-.footer-inner, .footer-bottom { position: relative; z-index: 1; }
-.footer-inner { display: grid; grid-template-columns: auto minmax(240px, 1fr) auto; align-items: center; gap: 36px; padding-bottom: 32px; }
-.footer-brand-lockup { display: flex; align-items: center; gap: 18px; }
-.footer-aapvr-logo { display: block; width: 136px; height: auto; object-fit: contain; }
-.footer-brand-lockup .brand-campaign-logo { width: 122px; height: auto; }
-.site-footer p { max-width: 700px; margin: 0; color: #e0ebd4; font-size: .87rem; }
-.site-footer .footer-cta { display: inline-flex; align-items: center; gap: 10px; padding: 14px 18px; white-space: nowrap; border: 1px solid #d4ff8d75; border-radius: 12px; color: #1b4100; background: linear-gradient(120deg, #c8f66b, #92df0a); box-shadow: 0 9px 23px #101f002e; }
-.site-footer .footer-cta:hover { color: #173a00; background: #ddff9f; }
-.footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding-top: 16px; border-top: 1px solid #d4ff8d42; color: #cfe0bf; font-size: .72rem; }
-.footer-bottom a { color: #ddff9f; }
-
-@media(max-width:990px) {
-  .header-inner { min-height: 84px; }
-  .brand { min-width: auto; }
+.hero:before { opacity: .12; background-image: radial-gradient(#d4efff 1px, transparent 1px); }
+.hero .eyebrow { color: #d4efff; }
+.hero .eyebrow:before { color: #fff; background: linear-gradient(135deg, #56b2e4, #0c6fa9); }
+.hero h1 { color: #fff; }
+.hero .lead { color: #e0f2fc; }
+.hero-note { border-color: #70c5ef; color: #d2eafa; }
+.hero-campaign-logo { filter: drop-shadow(0 8px 14px #002a4a45); }
+.hero .button { color: #073b70; background: linear-gradient(120deg, #fff, #d9f1ff); box-shadow: 0 8px 22px #002d4a35; }
+.hero .button:hover { background: #fff; }
+.hero .button.secondary { color: #fff; background: #ffffff12; border-color: #b3def370; }
+.guided-finder { border-color: #d5e7f4; }
+.finder-cover { min-height: 390px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+.finder-cover-icon { display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 20px; border-radius: 17px; background: linear-gradient(145deg,#e4f4fc,#cbeafa); color: #0c6aa4; font-size: 1.7rem; font-weight: 600; }
+.finder-cover p { max-width: 430px; }
+.finder-start { margin-top: 5px; }
+.eligibility-section .eligibility-title { max-width: none; margin: 0 0 14px; color: #fff; font-size: clamp(2.5rem, 4.2vw, 4rem); line-height: 1.02; letter-spacing: -.045em; }
+.eligibility-section .eligibility-subtitle { max-width: 440px; margin-bottom: 18px; color: #e8f5fd; font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 650; line-height: 1.24; }
+.social-section { scroll-margin-top: 104px; }
+.social-section .section-header { max-width: 790px; }
+.social-grid { margin-top: 28px; }
+.social-card { display: flex; flex-direction: column; min-height: 235px; color: inherit; text-decoration: none; transition: transform .18s, border-color .18s, box-shadow .18s; }
+.social-card:hover { transform: translateY(-3px); border-color: #96c6e2; box-shadow: 0 15px 36px #0c4d7e14; }
+.social-card-label { margin-bottom: 18px; color: #287db2; font-size: .68rem; font-weight: 850; letter-spacing: .11em; }
+.social-card h3 { color: #103f68; font-size: 1.3rem; }
+.social-card p { color: #5b7184; }
+.social-card .arrow-link { margin-top: auto; }
+.social-note { margin: 18px 0 0; color: #687d8e; font-size: .82rem; }
+.association-paths { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+.association-paths .button { white-space: nowrap; }
+.association-paths .button.secondary { color: #0a5289; border-color: #c7dfef; background: #fff; }
+.site-footer { background: linear-gradient(115deg, #052e55 0%, #06477c 48%, #0b6098 100%); }
+.site-footer:before { background-image: radial-gradient(#d6efff 1px, transparent 1px); }
+.site-footer p { color: #e0f0fa; }
+.site-footer .footer-cta { color: #073b70; border-color: #d4efff75; background: linear-gradient(120deg, #d8f1ff, #fff); }
+.site-footer .footer-cta:hover { color: #062e53; background: #fff; }
+.footer-social { position: relative; z-index: 1; display: flex; align-items: center; flex-wrap: wrap; gap: 14px; padding: 0 0 18px; color: #eff9ff; font-size: .82rem; }
+.footer-social strong { color: #fff; }
+.footer-social a { color: #b9e2f7; font-weight: 700; }
+.footer-social a:hover { color: #fff; }
+.footer-bottom { border-color: #d4efff42; color: #d2e8f6; }
+.footer-bottom a { color: #b9e2f7; }
+@media(max-width:1100px) {
+  .desktop-nav { display: none; }
+  .mobile-nav { display: block; margin-left: auto; }
+  .mobile-nav nav { right: 0; left: auto; }
 }
 @media(max-width:700px) {
-  .header-inner { min-height: 74px; }
-  .brand { gap: 10px; }
-  .brand-aapvr-logo { width: 102px; }
-  .brand-divider { height: 34px; }
-  .brand-campaign-logo { width: 103px; }
-  .footer-inner { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; padding-bottom: 25px; }
-  .footer-aapvr-logo { width: 126px; }
-  .footer-brand-lockup .brand-campaign-logo { width: 108px; }
-  .site-footer .footer-cta { margin-top: 2px; }
-  .footer-bottom { align-items: flex-start; flex-direction: column; }
+  .header-inner { min-height: 74px; gap: 12px; }
+  .brand-aapvr-logo { width: 106px; }
+  .header-member-link { margin-left: auto; padding: 10px 11px; font-size: .8rem; }
+  .mobile-nav { margin-left: 0; }
+  .mobile-nav summary { padding: 9px; font-size: .8rem; }
+  .hero-inner { padding-top: 38px; padding-bottom: 44px; }
+  .hero-campaign-logo { width: min(205px, 52vw); margin-bottom: 24px; }
+  .finder-cover { min-height: 300px; }
+  .eligibility-inner { grid-template-columns: 1fr; gap: 28px; }
+  .eligibility-grid { grid-template-columns: 1fr; }
+  .eligibility-grid article { min-height: auto; }
+  .association-paths { flex-direction: column; align-items: stretch; }
+  .association-paths .button { justify-content: center; }
+  .footer-social { align-items: flex-start; flex-direction: column; gap: 8px; }
 }
