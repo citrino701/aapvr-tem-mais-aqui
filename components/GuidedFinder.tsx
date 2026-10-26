@@ -61,10 +61,24 @@ export default function GuidedFinder({ content }: { content: Content }) {
     return matches.slice(0, needId === "tudo" ? 12 : 9);
   }, [content, need, needId, unitId]);
 
-  const unitOptions = [
-    { id: "qualquer", nome: "Qualquer unidade" },
-    ...content.units.map((unit) => ({ id: unit.id, nome: unit.nome })),
-  ];
+  const unitOptions = useMemo(() => {
+    if (!need) return [];
+    const categories = need.categories.length ? need.categories : content.categories.map((category) => category.id);
+    const relatedIds = new Set<string>();
+    if (categories.includes("saude")) content.units.forEach((unit) => relatedIds.add(unit.id));
+    content.services
+      .filter((service) => categories.includes(service.categoria))
+      .forEach((service) => serviceUnits(service).forEach((id) => relatedIds.add(id)));
+    const units = [...relatedIds].map((id) => ({
+      id,
+      nome: content.units.find((unit) => unit.id === id)?.nome || (id === "sede-campestre" ? "Sede Campestre" : id),
+    }));
+    return units.length > 1 ? [{ id: "qualquer", nome: "Qualquer unidade" }, ...units] : units;
+  }, [content, need]);
+
+  function unitLabel(id: string) {
+    return content.units.find((unit) => unit.id === id)?.nome || (id === "sede-campestre" ? "Sede Campestre" : id);
+  }
 
   function chooseNeed(id: string) {
     setNeedId(id);
@@ -114,7 +128,7 @@ export default function GuidedFinder({ content }: { content: Content }) {
           <span className="finder-result-check" aria-hidden="true">✓</span>
           <div><span className="finder-result-kicker">SUA BUSCA</span><h2 id="finder-title">{need.label}</h2></div>
         </div>
-        <p className="finder-location">Disponível em: <strong>{unitId === "qualquer" ? "consulte as unidades de cada serviço" : content.units.find((unit) => unit.id === unitId)?.nome}</strong></p>
+        <p className="finder-location">Disponível em: <strong>{unitId === "qualquer" ? "as unidades relacionadas à sua busca" : unitLabel(unitId)}</strong></p>
         <p className="finder-disclaimer">Quem pode utilizar e como acessar: consulte os critérios e confirme a disponibilidade de cada serviço.</p>
         {results.length > 0 ? <div className="finder-results-list">
           {results.map((result) => <article className="finder-result-card" key={`${result.href}-${result.title}`}>
