@@ -5,20 +5,29 @@ import type { ReactNode } from "react";
 import { t } from "@/lib/data";
 import { getContent } from "@/lib/cms";
 import NavigationFeedback from "@/components/NavigationFeedback";
+import SuggestionForm from "@/components/SuggestionForm";
 import "./globals.css";
 import "./campaign.css";
 
-export const metadata: Metadata = {
-  title: { default: "TEM MAIS AQUI | AAPVR", template: "%s | TEM MAIS AQUI" },
-  description: "Encontre serviços, unidades e formas de participar da AAPVR.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const c = await getContent();
+  return {
+    title: {
+      default: t(c,"page.metadata.default_title","TEM MAIS AQUI | AAPVR"),
+      template: t(c,"page.metadata.template","%s | TEM MAIS AQUI"),
+    },
+    description: t(c,"page.metadata.description","Encontre serviços, unidades e formas de participar da AAPVR."),
+  };
+}
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const c = await getContent();
-  const nav = [
-    ["Serviços", "/servicos"], ["Quem pode utilizar", "/#quem-pode-utilizar"],
-    ["Unidades", "/#unidades"], ["Como acessar", "/como-funciona"],
-    ["Dúvidas", "/#duvidas"],
+  const nav: Array<[string,string]> = [
+    [t(c,"nav.servicos","Serviços"), "/servicos"],
+    [t(c,"nav.quem_utilizar","Quem pode utilizar"), "/#quem-pode-utilizar"],
+    [t(c,"nav.unidades","Unidades"), "/#unidades"],
+    [t(c,"nav.como_acessar","Como acessar"), "/como-funciona"],
+    [t(c,"nav.duvidas","Dúvidas"), "/#duvidas"],
   ];
   return (
     <html lang="pt-BR">
@@ -27,27 +36,46 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <header className="site-header">
           <div className="container header-inner">
             <Link href="/" className="brand" aria-label="AAPVR, início">
-              <Image className="brand-aapvr-logo" src="/brand/aapvr.svg" alt="AAPVR — Associação dos Aposentados e Pensionistas de Volta Redonda" width={136} height={54} priority />
+              <Image className="brand-aapvr-logo" src="/brand/aapvr.svg" alt={t(c,"brand.aapvr.alt","AAPVR — Associação dos Aposentados e Pensionistas de Volta Redonda")} width={136} height={54} priority />
             </Link>
             <nav className="desktop-nav" aria-label="Navegação principal">
               {nav.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
             </nav>
-            <Link className="header-member-link" href="/associado">Sou associado <span aria-hidden="true">→</span></Link>
-            <details className="mobile-nav"><summary aria-label="Abrir menu">☰ Menu</summary><nav>{nav.map(([label,href]) => <Link key={href} href={href}>{label}</Link>)}</nav></details>
+            <Link className="header-member-link" href="/associado">{t(c,"nav.associado","Sou associado")} <span aria-hidden="true">→</span></Link>
+            <details className="mobile-nav"><summary aria-label={t(c,"site.menu.aria","Abrir menu")}>☰ {t(c,"site.menu.label","Menu")}</summary><nav>{nav.map(([label,href]) => <Link key={href} href={href}>{label}</Link>)}</nav></details>
           </div>
         </header>
-        {!c.cmsOnline && <div className="demo-banner" role="status"><div className="container">Versão de demonstração. Informações operacionais e contatos precisam de confirmação antes da publicação.</div></div>}
         <main id="principal">{children}</main>
         <footer className="site-footer">
           <div className="container footer-inner">
             <div className="footer-brand-lockup">
               <Image className="footer-aapvr-logo" src="/brand/aapvr.svg" alt="AAPVR — Associação dos Aposentados e Pensionistas de Volta Redonda" width={142} height={56} />
-              <Image className="brand-campaign-logo" src="/brand/tem-mais-aqui.svg" alt="Tem Mais Aqui" width={150} height={76} />
+              <Image className="brand-campaign-logo" src="/brand/tem-mais-aqui.svg" alt={t(c,"brand.campaign.alt","Tem Mais Aqui")} width={150} height={76} />
             </div>
-            <p>{t(c,"rodape.aviso")}</p>
+            <p className="footer-notice">{t(c,"rodape.aviso")}</p>
+            <div className="footer-social"><strong>{t(c,"footer.social.title","Acompanhe a AAPVR:")}</strong><div className="footer-social-links">{([
+              [t(c,"home.social.instagram.title","Instagram"), t(c,"social.instagram.url")],
+              [t(c,"home.social.facebook.title","Facebook"), t(c,"social.facebook.url")],
+              [t(c,"home.social.whatsapp.title","Canal no WhatsApp"), t(c,"social.whatsapp.url")],
+            ] as [string,string][]).map(([label,url]) => /^https?:\/\//i.test(url)
+              ? <a href={url} key={label} target="_blank" rel="noopener noreferrer">{label}</a>
+              : <span key={label} className="footer-social-unavailable">{label}</span>)}</div></div>
           </div>
-          <div className="container footer-social"><strong>Acompanhe a AAPVR:</strong>{[["Instagram",t(c,"social.instagram.url")],["Facebook",t(c,"social.facebook.url")],["Canal no WhatsApp",t(c,"social.whatsapp.url")]].filter(([,url])=>/^https?:\/\//i.test(url)).map(([label,url])=><a href={url} key={label} target="_blank" rel="noopener noreferrer">{label}</a>)}</div>
-          <div className="container footer-bottom"><span>Associação dos Aposentados e Pensionistas de Volta Redonda</span><Link href="/">Voltar ao início ↑</Link></div>
+          <div className="container footer-bottom"><span>{t(c,"footer.organization","Associação dos Aposentados e Pensionistas de Volta Redonda")}</span><Link href="/">{t(c,"footer.home_link","Voltar ao início")} ↑</Link></div>
+          <div className="container footer-suggestion-container">
+            <SuggestionForm copy={{
+              button: t(c,"feedback.button","Alguma sugestão para a melhora do site?"),
+              title: t(c,"feedback.title","Ajude a melhorar o site"),
+              prompt: t(c,"feedback.prompt","Conta pra gente o que podemos melhorar no site."),
+              label: t(c,"feedback.label","Sua sugestão"),
+              placeholder: t(c,"feedback.placeholder","Escreva sua sugestão..."),
+              privacy: t(c,"feedback.privacy","Não inclua dados pessoais ou informações sensíveis."),
+              submit: t(c,"feedback.submit","Enviar sugestão"),
+              submitting: t(c,"feedback.submitting","Enviando..."),
+              success: t(c,"feedback.success","Obrigado! Sua sugestão foi enviada."),
+              error: t(c,"feedback.error","Não foi possível enviar agora. Tente novamente em instantes."),
+            }} />
+          </div>
         </footer>
       </body>
     </html>
