@@ -526,3 +526,26 @@ body {
   .footer-inner .footer-social { grid-column: auto; }
   .footer-bottom { align-items: flex-start; flex-direction: column; gap: 10px; }
 }
+
+/* Formulário de sugestões conectado ao CMS. */
+
+.footer-suggestion-container { padding: 0 0 28px; }
+.footer-suggestion { max-width: 760px; margin-left: auto; }
+.footer-suggestion-trigger { padding: 10px 14px; border: 1px solid #d4efff75; border-radius: 10px; color: #eff9ff; background: #ffffff12; font: inherit; font-size: .88rem; font-weight: 750; cursor: pointer; transition: background .18s, border-color .18s; }
+.footer-suggestion-trigger:hover { background: #ffffff20; border-color: #d4efff; }
+.footer-suggestion-form { display: grid; gap: 10px; margin-top: 14px; padding: 20px; border: 1px solid #d4efff55; border-radius: 16px; color: #f4faff; background: #03294b65; }
+.footer-suggestion-form h2 { margin: 0; color: #fff; font-size: 1.2rem; }
+.footer-suggestion-form p { margin: 0; }
+.footer-suggestion-form label { margin-top: 3px; font-size: .86rem; font-weight: 750; }
+.footer-suggestion-form textarea { width: 100%; min-height: 110px; resize: vertical; padding: 12px 14px; border: 1px solid #c7dfef; border-radius: 10px; color: #17334d; background: #fff; font: inherit; }
+.footer-suggestion-form .footer-suggestion-privacy { color: #c7dfee; font-size: .76rem; }
+.footer-suggestion-form .button { justify-self: start; border: 0; cursor: pointer; }
+.footer-suggestion-form .button:disabled { cursor: wait; opacity: .68; }
+.footer-suggestion-status { color: #d7f5df !important; font-weight: 700; }
+.footer-suggestion-status.is-error { color: #ffd6cc !important; }
+@media(max-width:700px) {
+  .footer-suggestion { margin: 0; }
+  .footer-suggestion-trigger { width: 100%; }
+  .footer-suggestion-form { padding: 16px; }
+  .footer-suggestion-form .button { width: 100%; justify-content: center; }
+}
