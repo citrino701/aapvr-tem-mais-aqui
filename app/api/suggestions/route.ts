@@ -12,7 +12,8 @@ export async function POST(request: Request) {
 
     const body = await request.json();
     const suggestion = typeof body.suggestion === "string" ? body.suggestion.trim() : "";
-    const page = typeof body.page === "string" ? body.page.trim() : "/";
+    const rawPage = typeof body.page === "string" ? body.page.trim() : "/";
+    const page = rawPage === "/" ? "Página inicial" : rawPage;
 
     if (suggestion.length < 5 || suggestion.length > 2000) {
       return NextResponse.json({ ok: false, error: "Confira o texto da sugestão." }, { status: 400 });
