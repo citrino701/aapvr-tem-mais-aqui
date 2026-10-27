@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import { t } from "@/lib/data";
 import { getContent } from "@/lib/cms";
 import NavigationFeedback from "@/components/NavigationFeedback";
+import SuggestionForm from "@/components/SuggestionForm";
 import "./globals.css";
 import "./campaign.css";
 
@@ -61,6 +62,20 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
               : <span key={label} className="footer-social-unavailable">{label}</span>)}</div></div>
           </div>
           <div className="container footer-bottom"><span>{t(c,"footer.organization","Associação dos Aposentados e Pensionistas de Volta Redonda")}</span><Link href="/">{t(c,"footer.home_link","Voltar ao início")} ↑</Link></div>
+          <div className="container footer-suggestion-container">
+            <SuggestionForm copy={{
+              button: t(c,"feedback.button","Alguma sugestão para a melhora do site?"),
+              title: t(c,"feedback.title","Ajude a melhorar o site"),
+              prompt: t(c,"feedback.prompt","Conta pra gente o que podemos melhorar no site."),
+              label: t(c,"feedback.label","Sua sugestão"),
+              placeholder: t(c,"feedback.placeholder","Escreva sua sugestão..."),
+              privacy: t(c,"feedback.privacy","Não inclua dados pessoais ou informações sensíveis."),
+              submit: t(c,"feedback.submit","Enviar sugestão"),
+              submitting: t(c,"feedback.submitting","Enviando..."),
+              success: t(c,"feedback.success","Obrigado! Sua sugestão foi enviada."),
+              error: t(c,"feedback.error","Não foi possível enviar agora. Tente novamente em instantes."),
+            }} />
+          </div>
         </footer>
       </body>
     </html>
