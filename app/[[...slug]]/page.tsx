@@ -18,8 +18,8 @@ const first = (p:Record<string,string|string[]|undefined>, k:string) => {
 };
 
 export async function generateMetadata({ params }: PageArgs): Promise<Metadata> {
-  const {slug=[]} = await params;
-  return { title: slug.length ? slug.map(x=>x.replace(/-/g,' ')).join(' | ') : "TEM MAIS AQUI" };
+  const [{slug=[]}, c] = await Promise.all([params,getContent()]);
+  return { title: slug.length ? slug.map(x=>x.replace(/-/g,' ')).join(' | ') : t(c,"page.metadata.default_title","TEM MAIS AQUI | AAPVR") };
 }
 
 function Breadcrumb({ items, homeLabel }: { items: Array<[string,string]>; homeLabel: string }) {
