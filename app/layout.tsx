@@ -8,10 +8,16 @@ import NavigationFeedback from "@/components/NavigationFeedback";
 import "./globals.css";
 import "./campaign.css";
 
-export const metadata: Metadata = {
-  title: { default: "TEM MAIS AQUI | AAPVR", template: "%s | TEM MAIS AQUI" },
-  description: "Encontre serviços, unidades e formas de participar da AAPVR.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const c = await getContent();
+  return {
+    title: {
+      default: t(c,"page.metadata.default_title","TEM MAIS AQUI | AAPVR"),
+      template: t(c,"page.metadata.template","%s | TEM MAIS AQUI"),
+    },
+    description: t(c,"page.metadata.description","Encontre serviços, unidades e formas de participar da AAPVR."),
+  };
+}
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const c = await getContent();
