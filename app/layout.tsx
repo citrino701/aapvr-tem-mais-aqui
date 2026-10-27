@@ -36,7 +36,6 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
             <details className="mobile-nav"><summary aria-label="Abrir menu">☰ Menu</summary><nav>{nav.map(([label,href]) => <Link key={href} href={href}>{label}</Link>)}</nav></details>
           </div>
         </header>
-        {!c.cmsOnline && <div className="demo-banner" role="status"><div className="container">Versão de demonstração. Informações operacionais e contatos precisam de confirmação antes da publicação.</div></div>}
         <main id="principal">{children}</main>
         <footer className="site-footer">
           <div className="container footer-inner">
@@ -44,9 +43,15 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
               <Image className="footer-aapvr-logo" src="/brand/aapvr.svg" alt="AAPVR — Associação dos Aposentados e Pensionistas de Volta Redonda" width={142} height={56} />
               <Image className="brand-campaign-logo" src="/brand/tem-mais-aqui.svg" alt="Tem Mais Aqui" width={150} height={76} />
             </div>
-            <p>{t(c,"rodape.aviso")}</p>
+            <p className="footer-notice">{t(c,"rodape.aviso")}</p>
+            <div className="footer-social"><strong>Acompanhe a AAPVR:</strong><div className="footer-social-links">{([
+              ["Instagram", t(c,"social.instagram.url")],
+              ["Facebook", t(c,"social.facebook.url")],
+              ["Canal no WhatsApp", t(c,"social.whatsapp.url")],
+            ] as [string,string][]).map(([label,url]) => /^https?:\/\//i.test(url)
+              ? <a href={url} key={label} target="_blank" rel="noopener noreferrer">{label}</a>
+              : <span key={label} className="footer-social-unavailable">{label}</span>)}</div></div>
           </div>
-          <div className="container footer-social"><strong>Acompanhe a AAPVR:</strong>{[["Instagram",t(c,"social.instagram.url")],["Facebook",t(c,"social.facebook.url")],["Canal no WhatsApp",t(c,"social.whatsapp.url")]].filter(([,url])=>/^https?:\/\//i.test(url)).map(([label,url])=><a href={url} key={label} target="_blank" rel="noopener noreferrer">{label}</a>)}</div>
           <div className="container footer-bottom"><span>Associação dos Aposentados e Pensionistas de Volta Redonda</span><Link href="/">Voltar ao início ↑</Link></div>
         </footer>
       </body>
