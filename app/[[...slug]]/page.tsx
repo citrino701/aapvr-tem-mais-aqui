@@ -140,7 +140,6 @@ export default async function CatchAll({params,searchParams}:PageArgs) {
   if (path==='unidades') return <Units c={c}/>;
   if (path==='duvidas') return <FAQs c={c}/>;
   if (path==='contato') return <Contact c={c} search={search}/>;
-  if (path==='historias') return <div className="container narrow page-space"><TitleSection eyebrow="HISTÓRIAS REAIS" title={t(c,'historias.titulo')} description={t(c,'historias.texto')}/><Link href="/explorar" className="button spaced-link">Encontrar um serviço →</Link></div>;
   if (slug[0]==='unidades' && slug.length===2) {
     const u=c.units.find(u=>u.id===slug[1]); if (!u) notFound();return <UnitDetails c={c} unit={u}/>;
   }
