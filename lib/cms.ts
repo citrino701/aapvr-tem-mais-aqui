@@ -60,9 +60,13 @@ function refresh(url: string): Promise<Content> {
  * Uma resposta valida serve as proximas paginas do mesmo Worker. Ao vencer o prazo,
  * devolvemos os dados existentes e atualizamos em segundo plano.
  */
-export async function getContent(): Promise<Content> {
-  const url = process.env.GOOGLE_CONTENT_API_URL ||
+export function getContentApiUrl(): string {
+  return process.env.GOOGLE_CONTENT_API_URL ||
     "https://script.google.com/macros/s/AKfycbx9z-CERsSUJgYiPjMZCwCWIenaUIpVeDbmZ_dUc98j2zASt0QSCha-i_9Xy0vaNbet8Q/exec";
+}
+
+export async function getContent(): Promise<Content> {
+  const url = getContentApiUrl();
   if (cached?.url === url) {
     if (Date.now() >= cached.validUntil) {
       const promise = refresh(url);
