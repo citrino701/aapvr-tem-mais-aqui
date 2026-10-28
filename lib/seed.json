@@ -56,7 +56,10 @@
     "rodape.aviso": "As informações podem mudar. Confirme agenda, vagas e documentos com o setor responsável antes de comparecer. Para condições comerciais, fale com o Comercial.",
     "social.instagram.url": "",
     "social.facebook.url": "",
-    "social.whatsapp.url": ""
+    "social.whatsapp.url": "",
+    "consultas.central.details": "(24) 2102-1909, opção 7. Atendimento telefônico de segunda a sexta, das 08h às 14h.",
+    "contact.phone_hours": "Atendimento telefônico: segunda a sexta, das 08h às 14h.",
+    "contact.chooser.whatsapp_options": "No WhatsApp geral, escolha a opção correspondente ao seu assunto:\\n1. Boleto, PIX e comprovante\\n2. Centro Odontológico\\n3. Call Center\\n4. Jurídico\\n5. Ouvidoria e cancelamento\\n6. Unidade Barra do Piraí\\n7. Financeiro e negociação de débitos"
   },
   "categories": [
     {
@@ -910,7 +913,7 @@
       "nome": "Central de Agendamento",
       "telefone": "(24) 2102-1909",
       "whatsapp": "(24) 2102-1952",
-      "observacao": "Telefone: opção 7. WhatsApp: opção 5.",
+      "observacao": "Ligação: opção 7. Telefone: segunda a sexta, das 08h às 14h.",
       "publicado": "SIM"
     },
     {
@@ -918,71 +921,71 @@
       "nome": "Centro Odontológico",
       "telefone": "(24) 2102-1909",
       "whatsapp": "(24) 2102-1952",
-      "observacao": "Opção 4 nos dois canais.",
+      "observacao": "Ligação: opção 4. Telefone: segunda a sexta, das 08h às 14h.",
       "publicado": "SIM"
     },
     {
       "id": "cpsi",
       "nome": "CPSI",
-      "telefone": "(24) 2102-1988",
-      "whatsapp": "(24) 99287-1721",
-      "observacao": "",
+      "telefone": "(24) 2102-1909",
+      "whatsapp": "(24) 2102-1952",
+      "observacao": "Telefone: segunda a sexta, das 08h às 14h.",
       "publicado": "SIM"
     },
     {
       "id": "assistencia-social",
       "nome": "Assistência Social",
-      "telefone": "(24) 2102-1951",
-      "whatsapp": "(24) 98141-4445",
-      "observacao": "",
+      "telefone": "(24) 2102-1909",
+      "whatsapp": "(24) 2102-1952",
+      "observacao": "Telefone: segunda a sexta, das 08h às 14h.",
       "publicado": "SIM"
     },
     {
       "id": "sede",
       "nome": "Sede Campestre",
-      "telefone": "(24) 2102-1948",
-      "whatsapp": "",
-      "observacao": "",
+      "telefone": "(24) 2102-1909",
+      "whatsapp": "(24) 2102-1952",
+      "observacao": "Telefone: segunda a sexta, das 08h às 14h.",
       "publicado": "SIM"
     },
     {
       "id": "juridico",
       "nome": "Jurídico",
-      "telefone": "(24) 2102-1918",
+      "telefone": "(24) 2102-1909",
       "whatsapp": "(24) 2102-1952",
-      "observacao": "WhatsApp: opção 6.",
+      "observacao": "Telefone: segunda a sexta, das 08h às 14h.",
       "publicado": "SIM"
     },
     {
       "id": "previdenciario",
       "nome": "Previdenciário",
-      "telefone": "(24) 2102-1910",
-      "whatsapp": "",
-      "observacao": "",
+      "telefone": "(24) 2102-1909",
+      "whatsapp": "(24) 2102-1952",
+      "observacao": "Telefone: segunda a sexta, das 08h às 14h.",
       "publicado": "SIM"
     },
     {
       "id": "secretaria",
       "nome": "Secretaria",
-      "telefone": "(24) 2102-1904",
+      "telefone": "(24) 2102-1909",
       "whatsapp": "(24) 2102-1952",
-      "observacao": "WhatsApp: opção 3.",
+      "observacao": "Telefone: segunda a sexta, das 08h às 14h.",
       "publicado": "SIM"
     },
     {
       "id": "ouvidoria",
       "nome": "Ouvidoria",
-      "telefone": "(24) 2102-1970",
+      "telefone": "(24) 2102-1909",
       "whatsapp": "(24) 2102-1952",
-      "observacao": "WhatsApp: opção 7.",
+      "observacao": "Ligação: opção 5 (Ouvidoria e cancelamento). Telefone: segunda a sexta, das 08h às 14h.",
       "publicado": "SIM"
     },
     {
       "id": "comercial",
       "nome": "Comercial",
-      "telefone": "",
-      "whatsapp": "",
-      "observacao": "Contato oficial pendente de validação.",
+      "telefone": "(24) 2102-1909",
+      "whatsapp": "(24) 2102-1952",
+      "observacao": "Telefone: segunda a sexta, das 08h às 14h.",
       "publicado": "SIM"
     }
   ],
@@ -1050,7 +1053,7 @@
     {
       "id": "faq-11",
       "pergunta": "Onde faço uma reclamação ou sugestão?",
-      "resposta": "Na Ouvidoria, por telefone, WhatsApp ou atendimento presencial.",
+      "resposta": "Para falar com a Ouvidoria ou sobre cancelamento, ligue para (24) 2102-1909 e escolha a opção 5, de segunda a sexta, das 08h às 14h. Pelo WhatsApp geral, (24) 2102-1952, escolha a opção 5.",
       "publicado": "SIM"
     }
   ]

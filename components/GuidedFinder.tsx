@@ -121,11 +121,11 @@ export default function GuidedFinder({ content }: { content: Content }) {
         <button type="button" className="finder-back" onClick={reset}>{t(content,"finder.back.need","← Voltar e trocar a resposta")}</button>
         <h2 id="finder-title">{t(content,"finder.unit.title","Onde você prefere ser atendido?")}</h2>
         <p>{t(content,"finder.choice.label","Você escolheu:")} <strong>{needLabel.toLowerCase()}</strong></p>
-        <div className="finder-units" role="group" aria-label={t(content,"finder.aria.unit","Escolha uma unidade")}>
+        {unitOptions.length > 0 ? <div className="finder-units" role="group" aria-label={t(content,"finder.aria.unit","Escolha uma unidade")}>
           {unitOptions.map((unit) => <button type="button" className="finder-unit" key={unit.id} onClick={() => { setUnitId(unit.id); setShowResults(true); }}>
             {unit.nome}<span aria-hidden="true">→</span>
           </button>)}
-        </div>
+        </div> : <div className="finder-empty"><p>{t(content,"finder.units.empty","Ainda não há unidades relacionadas a essa opção.")}</p><Link className="button secondary" href="/contato?assunto=callcenter">{t(content,"finder.empty.contact","Falar com a equipe")} →</Link></div>}
       </div>}
 
       {need && unitId && showResults && <div className="finder-stage finder-results" key="results">
@@ -141,7 +141,7 @@ export default function GuidedFinder({ content }: { content: Content }) {
             <div><h3>{result.title}</h3><p>{result.summary}</p><small>{result.access}</small></div>
             <Link href={result.href} className="finder-result-link">{t(content,"finder.result.details","Ver detalhes")} <span aria-hidden="true">→</span></Link>
           </article>)}
-        </div> : <div className="finder-empty">{t(content,"finder.empty","Não encontramos uma opção publicada para essa combinação. Tente “Qualquer unidade” ou fale com a equipe.")}</div>}
+        </div> : <div className="finder-empty"><p>{t(content,"finder.empty","Não encontramos uma opção publicada para essa combinação. Tente “Qualquer unidade” ou fale com a equipe.")}</p><div className="button-row"><Link className="button" href="/contato?assunto=callcenter">{t(content,"finder.empty.contact","Falar com a equipe")} →</Link><Link className="button secondary" href="/servicos">{t(content,"home.search.services_cta","Explorar serviços")} →</Link></div></div>}
         <button type="button" className="finder-back finder-reset" onClick={reset}>{t(content,"finder.reset","Começar outra busca")}</button>
       </div>}
     </section>
