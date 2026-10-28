@@ -4,7 +4,7 @@ import type { Content } from "@/lib/data";
 import { t } from "@/lib/data";
 import { track } from "@/lib/analytics";
 
-const aliases: Record<string,string> = {consulta:"callcenter",associacao:"comercial",'condicoes-comerciais':"comercial",financeiro:"secretaria",cancelamento:"relacionamento"};
+const aliases: Record<string,string> = {consulta:"callcenter",associacao:"comercial",'condicoes-comerciais':"comercial",financeiro:"secretaria",cancelamento:"callcenter",relacionamento:"callcenter"};
 const digits = (s:string) => s.replace(/\D/g,"");
 export default function ContactChooser({ content, initial, service, specialty, unit }: {
   content: Content; initial: string; service: string; specialty: string; unit: string;
@@ -12,27 +12,30 @@ export default function ContactChooser({ content, initial, service, specialty, u
   const contacts=content.contacts;
   const [current,setCurrent] = useState(aliases[initial] || initial || "");
   const selection = contacts.find(c=>c.id===current);
-  const whats = selection?.whatsapp ? `https://wa.me/55${digits(selection.whatsapp)}` : "";
+  const general = contacts.find(c=>c.id==="callcenter") || contacts.find(c=>c.telefone || c.whatsapp);
+  const phone = selection?.telefone || general?.telefone || "";
+  const whatsapp = selection?.whatsapp || general?.whatsapp || "";
+  const whats = whatsapp ? `https://wa.me/55${digits(whatsapp)}` : "";
   return <div className="wizard-panel">
     <label htmlFor="assunto">{t(content,"contact.chooser.title","Sobre qual assunto você quer falar?")}</label>
     <select id="assunto" value={current} onChange={e=>{setCurrent(e.target.value);track("contact_department_selected",{department:e.target.value});}}>
       <option value="">{t(content,"contact.chooser.placeholder","Escolha o assunto")}</option>
       {contacts.map(c=><option key={c.id} value={c.id}>{c.nome}</option>)}
     </select>
-    {current && !selection && <p className="notice">{t(content,"contact.chooser.warning","Este contato ainda precisa ser confirmado pela AAPVR. Consulte a Central antes de encaminhar a demanda.")}</p>}
-    {selection && <div className="result-detail">
-      <h2>{selection.nome}</h2>
-      {selection.telefone && <p><strong>{t(content,"contact.chooser.phone_label","Telefone:")}</strong> {selection.telefone}</p>}
-      {selection.whatsapp && <p><strong>{t(content,"contact.chooser.whatsapp_label","WhatsApp:")}</strong> {selection.whatsapp}</p>}
-      {selection.observacao && <p className="muted">{selection.observacao}</p>}
+    {(selection || general) && <div className="result-detail">
+      <h2>{selection?.nome || t(content,"contact.general.title","Atendimento geral da AAPVR")}</h2>
+      <p>{t(content,"contact.general.forwarding","A equipe encaminhará sua solicitação ao setor responsável.")}</p>
+      {phone && <p><strong>{t(content,"contact.chooser.phone_label","Telefone:")}</strong> {phone}{selection?.observacao ? ` · ${selection.observacao}` : ""}</p>}
+      {whatsapp && <p><strong>{t(content,"contact.chooser.whatsapp_label","WhatsApp:")}</strong> {whatsapp}</p>}
       <div className="button-row">
-        {selection.telefone && <a className="button secondary" href={`tel:+55${digits(selection.telefone)}`} onClick={()=>track("contact_department_selected",{department:current,channel:"phone"})}>{t(content,"contact.chooser.call_cta","Ligar para o setor")} ↗</a>}
-        {whats && <a className="button" href={whats} target="_blank" rel="noopener noreferrer" onClick={()=>track("whatsapp_click",{department:current,service_id:service})}>{t(content,"contact.chooser.whatsapp_cta","Abrir WhatsApp")} ↗</a>}
+        {phone && <a className="button secondary" href={`tel:+55${digits(phone)}`} onClick={()=>track("contact_department_selected",{department:selection?.id || "callcenter",channel:"phone"})}>{t(content,"contact.chooser.call_cta","Ligar para a Central")} ↗</a>}
+        {whats && <a className="button" href={whats} target="_blank" rel="noopener noreferrer" onClick={()=>track("whatsapp_click",{department:selection?.id || "callcenter",service_id:service})}>{t(content,"contact.chooser.whatsapp_cta","Abrir WhatsApp")} ↗</a>}
       </div>
       {whats && <details className="contact-whatsapp-options">
         <summary>{t(content,"contact.chooser.whatsapp_options_label","Ver opções do WhatsApp geral")}</summary>
-        <p style={{ whiteSpace: "pre-line" }}>{t(content,"contact.chooser.whatsapp_options","No WhatsApp geral, escolha a opção correspondente ao seu assunto:\n1. Boleto, PIX e comprovante\n2. Centro Odontológico\n3. Call Center\n4. Jurídico\n5. Ouvidoria\n6. Unidade Barra do Piraí\n7. Financeiro e negociação de débitos")}</p>
+        <p style={{ whiteSpace: "pre-line" }}>{t(content,"contact.chooser.whatsapp_options","No WhatsApp geral, escolha a opção correspondente ao seu assunto:\\n1. Boleto, PIX e comprovante\\n2. Centro Odontológico\\n3. Call Center\\n4. Jurídico\\n5. Ouvidoria\\n6. Unidade Barra do Piraí\\n7. Financeiro e negociação de débitos")}</p>
       </details>}
     </div>}
+    {!selection && !general && current && <div className="notice">{t(content,"contact.chooser.warning","Não encontramos este contato. Volte ao início e escolha outro caminho.")} <a href="/">{t(content,"footer.home_link","Voltar ao início")} →</a></div>}
   </div>;
 }
