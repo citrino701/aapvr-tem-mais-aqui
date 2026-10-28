@@ -4,7 +4,7 @@ import type { Content } from "@/lib/data";
 import { t } from "@/lib/data";
 import { track } from "@/lib/analytics";
 
-const aliases: Record<string,string> = {consulta:"callcenter",associacao:"comercial",'condicoes-comerciais':"comercial",financeiro:"secretaria",cancelamento:"callcenter",relacionamento:"callcenter"};
+const aliases: Record<string,string> = {consulta:"callcenter",associacao:"comercial",'condicoes-comerciais':"comercial",financeiro:"secretaria",cancelamento:"ouvidoria",relacionamento:"ouvidoria"};
 const digits = (s:string) => s.replace(/\D/g,"");
 export default function ContactChooser({ content, initial, service, specialty, unit }: {
   content: Content; initial: string; service: string; specialty: string; unit: string;
@@ -16,6 +16,7 @@ export default function ContactChooser({ content, initial, service, specialty, u
   const phone = selection?.telefone || general?.telefone || "";
   const whatsapp = selection?.whatsapp || general?.whatsapp || "";
   const whats = whatsapp ? `https://wa.me/55${digits(whatsapp)}` : "";
+  const phoneHours = selection?.observacao || t(content,"contact.phone_hours","Atendimento telefônico: segunda a sexta, das 08h às 14h.");
   return <div className="wizard-panel">
     <label htmlFor="assunto">{t(content,"contact.chooser.title","Sobre qual assunto você quer falar?")}</label>
     <select id="assunto" value={current} onChange={e=>{setCurrent(e.target.value);track("contact_department_selected",{department:e.target.value});}}>
@@ -25,8 +26,9 @@ export default function ContactChooser({ content, initial, service, specialty, u
     {(selection || general) && <div className="result-detail">
       <h2>{selection?.nome || t(content,"contact.general.title","Atendimento geral da AAPVR")}</h2>
       <p>{t(content,"contact.general.forwarding","A equipe encaminhará sua solicitação ao setor responsável.")}</p>
-      {phone && <p><strong>{t(content,"contact.chooser.phone_label","Telefone:")}</strong> {phone}{selection?.observacao ? ` · ${selection.observacao}` : ""}</p>}
+      {phone && <p><strong>{t(content,"contact.chooser.phone_label","Telefone:")}</strong> {phone}</p>}
       {whatsapp && <p><strong>{t(content,"contact.chooser.whatsapp_label","WhatsApp:")}</strong> {whatsapp}</p>}
+      {phone && <p className="muted">{phoneHours}</p>}
       <div className="button-row">
         {phone && <a className="button secondary" href={`tel:+55${digits(phone)}`} onClick={()=>track("contact_department_selected",{department:selection?.id || "callcenter",channel:"phone"})}>{t(content,"contact.chooser.call_cta","Ligar para a Central")} ↗</a>}
         {whats && <a className="button" href={whats} target="_blank" rel="noopener noreferrer" onClick={()=>track("whatsapp_click",{department:selection?.id || "callcenter",service_id:service})}>{t(content,"contact.chooser.whatsapp_cta","Abrir WhatsApp")} ↗</a>}
