@@ -104,11 +104,11 @@ function Associated({c}:{c:Content}) {
     [t(c,"associated.card5.title","Consultar condições comerciais"),t(c,"associated.card5.text","Fale com o Comercial."),contactHref("comercial")],
     [t(c,"associated.card6.title","Atualizar cadastro ou carteira"),t(c,"associated.card6.text","Veja o canal da Secretaria."),contactHref("secretaria")],
     [t(c,"associated.card7.title","Fazer uma reclamação ou sugestão"),t(c,"associated.card7.text","Registre a demanda na Ouvidoria."),contactHref("ouvidoria")],
-    [t(c,"associated.card8.title","Falar sobre permanência ou cancelamento"),t(c,"associated.card8.text","Converse com Relacionamento para entender os próximos passos."),contactHref("relacionamento")]
+    [t(c,"associated.card8.title","Falar sobre permanência ou cancelamento"),t(c,"associated.card8.text","Para tratar de permanência ou cancelamento, fale com a Ouvidoria e escolha a opção 5."),contactHref("ouvidoria")]
   ];
   const actions=[
     t(c,"associated.card1.cta","Agendar consulta"),t(c,"associated.card2.cta","Acessar canais do Call Center"),t(c,"associated.card3.cta","Explorar serviços"),t(c,"associated.card4.cta","Falar com a Secretaria"),
-    t(c,"associated.card5.cta","Consultar condições comerciais"),t(c,"associated.card6.cta","Atualizar cadastro"),t(c,"associated.card7.cta","Falar com a Ouvidoria"),t(c,"associated.card8.cta","Conversar com Relacionamento")
+    t(c,"associated.card5.cta","Consultar condições comerciais"),t(c,"associated.card6.cta","Atualizar cadastro"),t(c,"associated.card7.cta","Falar com a Ouvidoria"),t(c,"associated.card8.cta","Falar com a Ouvidoria · opção 5")
   ];
   return <div className="container page-space"><TitleSection eyebrow={t(c,"nav.associado","JÁ SOU ASSOCIADO")} title={t(c,"associado.titulo")} description={t(c,"associado.texto")}/><div className="card-grid two">{acts.map(([title,body,href],index)=><SectionCard key={title} title={title} body={body} href={href} cta={actions[index]}/>)}</div></div>;
 }
