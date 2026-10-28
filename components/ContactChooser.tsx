@@ -36,6 +36,6 @@ export default function ContactChooser({ content, initial, service, specialty, u
         <p style={{ whiteSpace: "pre-line" }}>{t(content,"contact.chooser.whatsapp_options","No WhatsApp geral, escolha a opção correspondente ao seu assunto:\n1. Boleto, PIX e comprovante\n2. Centro Odontológico\n3. Call Center\n4. Jurídico\n5. Ouvidoria\n6. Unidade Barra do Piraí\n7. Financeiro e negociação de débitos")}</p>
       </details>}
     </div>}
-    {!selection && !general && current && <div className="notice">{t(content,"contact.chooser.warning","Não encontramos este contato. Volte ao início e escolha outro caminho.")} <a href="/">{t(content,"footer.home_link","Voltar ao início")} →</a></div>}
+    {!selection && !general && <div className="notice">{t(content,"contact.chooser.warning","Os canais de contato estão indisponíveis no momento.")} <a href="/servicos">{t(content,"home.search.services_cta","Explorar serviços")} →</a> · <a href="/">{t(content,"footer.home_link","Voltar ao início")} →</a></div>}
   </div>;
 }
