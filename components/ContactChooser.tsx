@@ -12,15 +12,7 @@ export default function ContactChooser({ content, initial, service, specialty, u
   const contacts=content.contacts;
   const [current,setCurrent] = useState(aliases[initial] || initial || "");
   const selection = contacts.find(c=>c.id===current);
-  const fill=(template:string,values:Record<string,string>)=>Object.entries(values).reduce((text,[key,value])=>text.replaceAll(`{${key}}`,value),template);
-  const message = specialty ? fill(t(content,"contact.message.consultation","Olá. Vim pelo hub TEM MAIS AQUI e quero saber como solicitar uma consulta de {especialidade}{unidade}."),{
-      especialidade:specialty,
-      unidade:unit ? fill(t(content,"contact.message.consultation_unit"," na unidade {unidade}"),{unidade:content.units.find((item)=>item.id===unit)?.nome||unit}) : "",
-    }) :
-    service ? fill(t(content,"contact.message.service","Olá. Vim pelo hub TEM MAIS AQUI e quero saber os requisitos e a disponibilidade para {servico}."),{servico:service}) :
-    current==="comercial" ? t(content,"contact.message.commercial","Olá. Conheci a AAPVR pelo hub TEM MAIS AQUI e quero entender as categorias, as condições de adesão e como funciona a associação.") :
-    fill(t(content,"contact.message.default","Olá. Vim pelo hub TEM MAIS AQUI e gostaria de informações sobre {assunto}."),{assunto:selection?.nome.toLowerCase()||"um serviço"});
-  const whats = selection?.whatsapp ? `https://wa.me/55${digits(selection.whatsapp)}?text=${encodeURIComponent(message)}` : "";
+  const whats = selection?.whatsapp ? `https://wa.me/55${digits(selection.whatsapp)}` : "";
   return <div className="wizard-panel">
     <label htmlFor="assunto">{t(content,"contact.chooser.title","Sobre qual assunto você quer falar?")}</label>
     <select id="assunto" value={current} onChange={e=>{setCurrent(e.target.value);track("contact_department_selected",{department:e.target.value});}}>
@@ -37,7 +29,10 @@ export default function ContactChooser({ content, initial, service, specialty, u
         {selection.telefone && <a className="button secondary" href={`tel:+55${digits(selection.telefone)}`} onClick={()=>track("contact_department_selected",{department:current,channel:"phone"})}>{t(content,"contact.chooser.call_cta","Ligar para o setor")} ↗</a>}
         {whats && <a className="button" href={whats} target="_blank" rel="noopener noreferrer" onClick={()=>track("whatsapp_click",{department:current,service_id:service})}>{t(content,"contact.chooser.whatsapp_cta","Abrir WhatsApp")} ↗</a>}
       </div>
-      {whats && <p className="muted">{t(content,"contact.chooser.prefill_note","A mensagem já vem preenchida. Você poderá revisar antes de enviar.")}</p>}
+      {whats && <details className="contact-whatsapp-options">
+        <summary>{t(content,"contact.chooser.whatsapp_options_label","Ver opções do WhatsApp geral")}</summary>
+        <p style={{ whiteSpace: "pre-line" }}>{t(content,"contact.chooser.whatsapp_options","No WhatsApp geral, escolha a opção correspondente ao seu assunto:\n1. Boleto, PIX e comprovante\n2. Centro Odontológico\n3. Call Center\n4. Jurídico\n5. Ouvidoria\n6. Unidade Barra do Piraí\n7. Financeiro e negociação de débitos")}</p>
+      </details>}
     </div>}
   </div>;
 }
