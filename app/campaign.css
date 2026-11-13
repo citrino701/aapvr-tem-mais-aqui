@@ -537,7 +537,9 @@ body {
 .footer-suggestion-form h2 { margin: 0; color: #fff; font-size: 1.2rem; }
 .footer-suggestion-form p { margin: 0; }
 .footer-suggestion-form label { margin-top: 3px; font-size: .86rem; font-weight: 750; }
-.footer-suggestion-form textarea { width: 100%; min-height: 110px; resize: vertical; padding: 12px 14px; border: 1px solid #c7dfef; border-radius: 10px; color: #17334d; background: #fff; font: inherit; }
+.footer-suggestion-form textarea, .footer-suggestion-form input { width: 100%; min-height: 110px; resize: vertical; padding: 12px 14px; border: 1px solid #c7dfef; border-radius: 10px; color: #17334d; background: #fff; font: inherit; }
+.footer-suggestion-form input { min-height: 0; resize: none; }
+.footer-suggestion-form .footer-suggestion-hint { margin-top: -4px; color: #c7dfee; font-size: .76rem; }
 .footer-suggestion-form .footer-suggestion-privacy { color: #c7dfee; font-size: .76rem; }
 .footer-suggestion-form .button { justify-self: start; border: 0; cursor: pointer; }
 .footer-suggestion-form .button:disabled { cursor: wait; opacity: .68; }

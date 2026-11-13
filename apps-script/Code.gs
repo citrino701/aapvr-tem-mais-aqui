@@ -173,9 +173,14 @@ function doPost(e) {
 
     const suggestion = cleanPlainText(body.suggestion, 2000);
     const page = cleanPlainText(body.page, 500);
+    const whatsapp = String(body.whatsapp || '').replace(/\D/g, '').slice(0, 13);
 
     if (suggestion.length < 5) {
       return jsonOutput({ ok: false, error: 'Escreva uma sugestão antes de enviar.' });
+    }
+
+    if (whatsapp.length < 10) {
+      return jsonOutput({ ok: false, error: 'Informe um WhatsApp válido com DDD.' });
     }
 
     if (!lock.tryLock(5000)) {
@@ -189,7 +194,7 @@ function doPost(e) {
       throw new Error('Aba SUGESTOES não encontrada.');
     }
 
-    const expectedHeaders = ['Data e hora', 'Sugestão', 'Página de origem'];
+    const expectedHeaders = ['Data e hora', 'Sugestão', 'Página de origem', 'WhatsApp'];
     const actualHeaders = sheet.getRange(1, 1, 1, expectedHeaders.length)
       .getDisplayValues()[0]
       .map(value => String(value).trim());
@@ -199,11 +204,12 @@ function doPost(e) {
     }
 
     const nextRow = sheet.getLastRow() + 1;
-    sheet.getRange(nextRow, 2, 1, 2).setNumberFormat('@');
-    sheet.getRange(nextRow, 1, 1, 3).setValues([[
+    sheet.getRange(nextRow, 2, 1, 3).setNumberFormat('@');
+    sheet.getRange(nextRow, 1, 1, 4).setValues([[
       new Date(),
       suggestion,
-      page
+      page,
+      whatsapp
     ]]);
 
     return jsonOutput({ ok: true });

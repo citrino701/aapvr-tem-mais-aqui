@@ -9,6 +9,10 @@ type SuggestionCopy = {
   prompt: string;
   label: string;
   placeholder: string;
+  whatsappLabel: string;
+  whatsappPlaceholder: string;
+  whatsappHint: string;
+  whatsappInvalid: string;
   privacy: string;
   submit: string;
   submitting: string;
@@ -19,11 +23,18 @@ type SuggestionCopy = {
 export default function SuggestionForm({ copy }: { copy: SuggestionCopy }) {
   const [open, setOpen] = useState(false);
   const [suggestion, setSuggestion] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+  const [whatsappError, setWhatsappError] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (status === "sending") return;
+
+    if (!isValidWhatsapp(whatsapp)) {
+      setWhatsappError(true);
+      return;
+    }
 
     setStatus("sending");
     try {
@@ -32,6 +43,7 @@ export default function SuggestionForm({ copy }: { copy: SuggestionCopy }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           suggestion,
+          whatsapp,
           page: window.location.pathname,
         }),
       });
@@ -42,6 +54,7 @@ export default function SuggestionForm({ copy }: { copy: SuggestionCopy }) {
       }
 
       setSuggestion("");
+      setWhatsapp("");
       setStatus("success");
     } catch {
       setStatus("error");
@@ -78,6 +91,27 @@ export default function SuggestionForm({ copy }: { copy: SuggestionCopy }) {
             rows={4}
             required
           />
+          <label htmlFor="site-suggestion-whatsapp">{copy.whatsappLabel}</label>
+          <input
+            id="site-suggestion-whatsapp"
+            name="whatsapp"
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            value={whatsapp}
+            onChange={(event) => {
+              setWhatsapp(event.target.value);
+              if (whatsappError) setWhatsappError(false);
+              if (status === "error") setStatus("idle");
+            }}
+            placeholder={copy.whatsappPlaceholder}
+            maxLength={25}
+            aria-describedby="site-suggestion-whatsapp-hint"
+            aria-invalid={whatsappError}
+            required
+          />
+          <small id="site-suggestion-whatsapp-hint" className="footer-suggestion-hint">{copy.whatsappHint}</small>
+          {whatsappError && <p className="footer-suggestion-status is-error" role="alert">{copy.whatsappInvalid}</p>}
           <p className="footer-suggestion-privacy">{copy.privacy}</p>
           <button type="submit" className="button" disabled={status === "sending" || status === "success"}>
             {status === "sending" ? copy.submitting : copy.submit}
@@ -88,4 +122,10 @@ export default function SuggestionForm({ copy }: { copy: SuggestionCopy }) {
       )}
     </div>
   );
+}
+
+/** Aceita números brasileiros com DDD (10 ou 11 dígitos), com ou sem o código 55. */
+function isValidWhatsapp(value: string) {
+  const digits = value.replace(/\D/g, "").replace(/^55(?=\d{10,11}$)/, "");
+  return digits.length === 10 || digits.length === 11;
 }
